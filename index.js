@@ -3,7 +3,7 @@ const app = express();
 const port = 8000;
 
 //loading router
-app.use('/', require("./routes/index"));
+app.use('/', require("./routes"));
 
 // listening to the server at port
 app.listen(port, function(err){
