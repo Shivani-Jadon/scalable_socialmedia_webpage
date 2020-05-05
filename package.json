@@ -1,0 +1,19 @@
+{
+  "name": "distributed_code",
+  "version": "1.0.0",
+  "description": "My social media web page with distributed and centralised code",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "social",
+    "media"
+  ],
+  "author": "Shivani",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
