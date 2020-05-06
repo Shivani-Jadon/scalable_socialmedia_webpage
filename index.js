@@ -5,6 +5,10 @@ const port = 8000;
 //loading router
 app.use('/', require("./routes"));
 
+//setting up views engine
+app.set('view engine', 'ejs');
+app.set('views', './views');
+
 // listening to the server at port
 app.listen(port, function(err){
     if(err){
