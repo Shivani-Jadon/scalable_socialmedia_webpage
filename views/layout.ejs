@@ -1,0 +1,21 @@
+<!-- this common layout will be included in all the views -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            <%= title %>
+        </title> 
+    </head>
+
+    <body>
+        <!-- including partial for header in the layout -->
+        <%- include('_header'); %>
+
+        <%- body %>
+
+        <!-- including partial for footer in the layout -->
+        <%- include('_footer'); %>
+    </body>
+    
+
+</html>
