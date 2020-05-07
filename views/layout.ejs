@@ -5,6 +5,8 @@
         <title>
             <%= title %>
         </title> 
+        <link rel="stylesheet" href="css/layout.css">
+        <%- style %>
     </head>
 
     <body>
@@ -15,6 +17,8 @@
 
         <!-- including partial for footer in the layout -->
         <%- include('_footer'); %>
+
+        <%- script %>
     </body>
     
 

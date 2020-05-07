@@ -1,0 +1,7 @@
+/* styling user's post page */
+body{
+    margin: 0;
+    background-color: rgb(226, 168, 168);
+    color: sienna;
+    text-align: center;
+}
