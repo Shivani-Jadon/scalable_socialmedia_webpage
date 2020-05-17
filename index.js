@@ -4,6 +4,9 @@ const port = 8000;
 const express_layout = require('express-ejs-layouts');
 const db = require("./config/mongoose");
 
+// middleware to read data from form
+app.use(express.urlencoded());
+
 // directing app to assets folder for static files
 app.use(express.static('./assets'));
 

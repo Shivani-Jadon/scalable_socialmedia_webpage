@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 // connecting to database
-mongoose.createConnection("mongodb://localhost/scalable_code_development");
+mongoose.connect("mongodb://localhost/scalable_code_development");
 //or mongoose.connect("mongodb://localhost/scalable_code_development");
 
 const db = mongoose.connection;

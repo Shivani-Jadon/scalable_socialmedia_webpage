@@ -1,6 +1,6 @@
 <!-- view for login form -->
 
-<form action="/" id="login-form" method="POST">
+<form action="/check_user/authorize" id="login-form" method="POST">
     <!-- input for email -->
     <label for="email">E-mail</label>
     <br/>
@@ -9,7 +9,7 @@
     <!-- input for password -->
     <label for="password">Password</label>
     <br/>
-    <input type="password" placeholder="***********" placeholder="Enter password">
+    <input type="password" name="password" placeholder="***********" placeholder="Enter password">
     <br/>
     <!-- submit button for login -->
     <button type="submit" form="login-form" value="login">Login</button>

@@ -2,7 +2,7 @@ const express = require("express");
 const route = express.Router();
 
 // storing information of user-login controller
-const signin_user = require("../controllers/user-signin");
+const signin_user = require("../controllers/userSignin");
 
 console.log("loading user signin route");
 

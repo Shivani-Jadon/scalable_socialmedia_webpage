@@ -25,4 +25,10 @@ route.use('/login', require("./login"));
 // middleware to login route
 route.use('/signin', require("./signin"));
 
+// middleware to route to store new user info
+route.use('/create_account', require("./create_account"));
+
+// middleware to route to check authoriztion of info
+route.use('/check_account', require("./check_account"));
+
 module.exports = route;

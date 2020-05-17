@@ -1,28 +1,28 @@
 <!-- view for user sign-in form -->
 
-<form action="/" id="signin-form" method="POST">
+<form action="/create_account/add" id="signin-form" method="POST"> 
     <!-- input for first name of user -->
-    <label for="firstname">First name</label>
+    <label for="first_name">First name</label>
     <br/>
-    <input type="text" name="firstname" placeholder="Enter first name">
+    <input type="text" name="first_name" placeholder="Enter first name" required>
     <br/>
     <!-- input for first name of user -->
-    <label for="lastname">Last name</label>
+    <label for="last_name">Last name</label>
     <br/>
-    <input type="text" name="lastname" placeholder="Enter last name">
+    <input type="text" name="last_name" placeholder="Enter last name" required>
     <br/>
     <!-- input for email -->
     <label for="email">E-mail</label>
     <br/>
-    <input type="email" name="email" placeholder="Enter email eg. example@gmail.com">
+    <input type="email" name="email" placeholder="eg. example@gmail.com" required>
     <br/>
     <!-- input for password -->
     <label for="password">Password</label>
     <br/>
-    <input type="password" placeholder="***********" placeholder="Enter password">
+    <input type="password" name="password" placeholder="***********" placeholder="Enter password" required>
     <br/>
     <!-- submit button for login -->
-    <button type="submit" form="login-form" value="login">Login</button>
+    <button type="submit" form="signin-form" value="signin">Signin</button>
 
     <!-- redirecting to login page -->
     <div id="new-user">
