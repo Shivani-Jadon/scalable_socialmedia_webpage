@@ -10,11 +10,19 @@ const homeController = require("../controllers/homeController");
 //route.get('url', controller.imported_action)
 route.get('/',homeController.home);
 
-//routing to sub-routes
+//middleware routing to sub-routes
 //route.use('url', require(file path))
+
+// middleware to user-page route
 route.use('/user',require("./user"));
 
+// middleware to user-posts route
 route.use('/posts',require("./posts"));
 
+// middleware to login route
+route.use('/login', require("./login"));
+
+// middleware to login route
+route.use('/signin', require("./signin"));
 
 module.exports = route;

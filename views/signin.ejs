@@ -1,0 +1,32 @@
+<!-- view for user sign-in form -->
+
+<form action="/" id="signin-form" method="POST">
+    <!-- input for first name of user -->
+    <label for="firstname">First name</label>
+    <br/>
+    <input type="text" name="firstname" placeholder="Enter first name">
+    <br/>
+    <!-- input for first name of user -->
+    <label for="lastname">Last name</label>
+    <br/>
+    <input type="text" name="lastname" placeholder="Enter last name">
+    <br/>
+    <!-- input for email -->
+    <label for="email">E-mail</label>
+    <br/>
+    <input type="email" name="email" placeholder="Enter email eg. example@gmail.com">
+    <br/>
+    <!-- input for password -->
+    <label for="password">Password</label>
+    <br/>
+    <input type="password" placeholder="***********" placeholder="Enter password">
+    <br/>
+    <!-- submit button for login -->
+    <button type="submit" form="login-form" value="login">Login</button>
+
+    <!-- redirecting to login page -->
+    <div id="new-user">
+        Already a user? 
+        <a href="/login/user-login"> Login</a>
+    </div>
+</form>
