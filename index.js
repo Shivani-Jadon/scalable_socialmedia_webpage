@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cookie_parser = require('cookie-parser');
 const port = 8000;
 const express_layout = require('express-ejs-layouts');
 const db = require("./config/mongoose");
@@ -7,11 +8,15 @@ const db = require("./config/mongoose");
 // middleware to read data from form
 app.use(express.urlencoded());
 
+// middleware to access cookie parser
+app.use(cookie_parser());
+
 // directing app to assets folder for static files
 app.use(express.static('./assets'));
 
 //loading layouts for ejs views
 app.use(express_layout);
+
 //extracting styles and scripts from subfiles into the layout
 app.set("layout extractStyles", true);
 app.set("layout extractScripts", true);

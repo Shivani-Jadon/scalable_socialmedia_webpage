@@ -23,7 +23,7 @@ route.use('/posts',require("./posts"));
 route.use('/login', require("./login"));
 
 // middleware to login route
-route.use('/signin', require("./signin"));
+route.use('/signup', require("./signup"));
 
 // middleware to route to store new user info
 route.use('/create_account', require("./create_account"));
