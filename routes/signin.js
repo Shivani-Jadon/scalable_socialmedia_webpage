@@ -2,12 +2,12 @@ const express = require("express");
 const route = express.Router();
 
 // storing information of user-login controller
-const signup_user = require("../controllers/userSignup");
+const signin_user = require("../controllers/userSignin");
 
-console.log("loading user signup route");
+console.log("loading user signin route");
 
 // routing to the controller
-route.get("/user-signup", signup_user.create_user);
+route.get("/user-signin", signin_user.create_user);
 
 // exporting the route
 module.exports = route;
