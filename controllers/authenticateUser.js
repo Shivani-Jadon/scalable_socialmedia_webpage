@@ -1,21 +1,35 @@
 const user_detail = require("../models/userInfo_model");
 
+// steps for authenticating user
 module.exports.verify_user = function(req, res){
 
-    let user_email = req.body.email;
-    let user_password = req.body.password;
+    // find user
+    user_detail.findOne({email: req.body.email}, function(err, user){
+    
+        if(err)
+        {
+            console.log(`Error in updating/creating user data in database ${err}`);
+            return;
+        } 
 
-    // user_detail.find(user_email, user_password, function(err){
+        // handle user found
+        if(user)
+        {   // handle password mismatch/incorrect password
+            if(user.password != req.body.password)
+            {
+                return res.redirect("back");
+            }
 
-    //     if(err){
-    //         console.log(`Error in login : ${err}`);
-    //         return;
-    //     }
-    //     return res.send("<h1> Successfully Logged in </h1>");
-    // });
-
-    if(user_detail.email == user_email && user_detail.password == user_password)
-    {
-        return res.send("<h1> Successfully Logged in </h1>");
-    }
+            // handle session creation
+            res.cookie("user_id", user.id);
+            res.redirect("/user/profile");
+        }
+        // handle user  not found
+        else
+        {
+            return res.redirect("back");
+        }
+                    
+    });
+ 
 }
