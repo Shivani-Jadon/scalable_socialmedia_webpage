@@ -1,6 +1,6 @@
 const user_detail = require("../models/userInfo_model");
 
-// steps for authenticating user
+// steps for authenticating user (Manually)
 module.exports.verify_user = function(req, res){
 
     // find user

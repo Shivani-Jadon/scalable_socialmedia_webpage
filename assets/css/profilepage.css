@@ -5,3 +5,12 @@ body{
     color: darkolivegreen;
     text-align: center;
 }
+
+body a button{
+    margin-left: 60%;
+    margin-top: 2%;
+    background-color: olivedrab;
+    color: white;
+    font-weight: bold;
+    font-style: italic;
+}
