@@ -4,3 +4,22 @@ body header{
     color: white;
     padding: 1rem;
 }
+
+a{
+    color: #00BCD4;
+    margin: 20px;
+}
+
+a:hover{
+    color: white;
+}
+
+button{
+    background-color: cyan;
+    color: #E91E63;
+    border: 2px #E91E63 solid;
+}
+
+button:hover{
+    background-color: black;
+}

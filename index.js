@@ -9,6 +9,7 @@ const session = require('express-session');
 // importing passport for authentication
 const passport = require('passport');
 const LocalStrategy = require("./config/passport_local_strategy");
+// for storing session cookie in database
 const MongoStore = require('connect-mongo')(session);
 
 

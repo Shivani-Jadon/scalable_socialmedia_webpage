@@ -3,7 +3,34 @@
 <!-- linking stylesheet -->
 <link rel="stylesheet" type="text/css" href="/css/header.css">
 
-
 <header>
-    Header of the page
+    <h5>
+        Header of the page
+    </h5>    
+
+    <% if(locals.user) { %>
+        <!-- for user profile page -->
+        <span>
+            <a href="/user/profile"><%= user.first_name %> <%= user.last_name %></a>
+        </span>
+        <!-- for signing out user -->
+        <span>
+            <a href="/user/sign-out">
+                <button type="button">Sign Out</button>
+            </a>
+        </span>
+    <% }else{ %>
+        <!-- for login page -->
+        <span>
+            <a href="/login/user-login">
+                <button type="button">Login</button>
+            </a>
+        </span>
+        <!-- for sign up page -->
+        <span>
+            <a href="/signup/user-signup">
+                <button type="button">Sign Up</button>
+            </a>
+        </span>
+    <% } %>
 </header>

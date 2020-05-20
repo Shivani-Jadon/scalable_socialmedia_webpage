@@ -5,7 +5,7 @@ module.exports.home = function(req, res){
    // modifying values for a key in cookie
    res.cookie('user_id', 1919);
 
-   return res.render("homepage", {title: "Home page", user: "Shivani"});
+   return res.render("homepage", {title: "Home page"});
 }
 
 //display this when home is exported
