@@ -4,6 +4,11 @@ const cookie_parser = require('cookie-parser');
 const port = 8000;
 const express_layout = require('express-ejs-layouts');
 const db = require("./config/mongoose");
+// library for session cookies 
+const session = require('express-session');
+// importing passport for authentication
+const passport = require('passport');
+const LocalStrategy = require("./config/passport_local_strategy");
 
 // middleware to read data from form
 app.use(express.urlencoded());
@@ -20,6 +25,24 @@ app.use(express_layout);
 //extracting styles and scripts from subfiles into the layout
 app.set("layout extractStyles", true);
 app.set("layout extractScripts", true);
+
+// middleware to session cookie
+app.use(session({
+    name : 'e-cookie',
+    // change the secret key before production deployment
+    secret : 'mywayofencryption',
+    saveUninitialized : false,
+    resave : false,
+    cookie : {
+        maxAge : (1000 * 60 * 100)            //defining the maximum age of cookie
+    }
+}));
+
+// middleware to use passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(passport.setAuthenticatedUser);
 
 //loading router
 app.use('/', require("./routes"));
