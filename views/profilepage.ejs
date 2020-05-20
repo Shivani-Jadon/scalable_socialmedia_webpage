@@ -4,10 +4,13 @@
 <link rel="stylesheet" type="text/css" href="/css/profilepage.css">
 
     <h1>
-        Welcome <%= user %>
+        Welcome <%= user.first_name %>
     </h1>
 
     <h2>
         You are viewing <%= title %> page
     </h2>
-   
+    
+    <h3>
+        <%= user.email %>
+    </h3>

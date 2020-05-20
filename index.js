@@ -9,6 +9,8 @@ const session = require('express-session');
 // importing passport for authentication
 const passport = require('passport');
 const LocalStrategy = require("./config/passport_local_strategy");
+const MongoStore = require('connect-mongo')(session);
+
 
 // middleware to read data from form
 app.use(express.urlencoded());
@@ -35,7 +37,18 @@ app.use(session({
     resave : false,
     cookie : {
         maxAge : (1000 * 60 * 100)            //defining the maximum age of cookie
-    }
+    },
+    // the sesion cookie will be store in mongodb via connect-mongo
+    store : new MongoStore(
+        {
+            mongooseConnection : db, 
+            autoRemove : 'disabled'             
+        },
+        function(err){
+            // either print error or success msg 
+            console.log(err || "connect-mongodb setup successful")
+        }
+    )
 }));
 
 // middleware to use passport

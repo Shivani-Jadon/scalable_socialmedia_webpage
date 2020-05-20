@@ -2,5 +2,5 @@
 
 module.exports.verify_user = function(req, res){
 
-   return res.redirect('/user/profile');
+   return res.redirect('/');
 }
