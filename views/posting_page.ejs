@@ -4,13 +4,40 @@
 <!-- <link rel="stylesheet" type="text/css" href="/css/posting.css"> -->
 
 <h1>
-    Welcome <%= user %>
+    Welcome 
 </h1>
 
 <h2>
     You are viewing <%= title %> page
 </h2>
 
-<h3>
-    Please like and share
-</h3>
+<section>
+    <h3>
+        Posts
+    </h3>
+    
+    <form action="/posts/create_post" id="posting-form" name="posting-form" method="POST">
+        <textarea name="content" cols="30" rows="5"></textarea>
+        <br/>
+        <input type="submit" value="Post">
+    </form>
+
+    <!-- div for storing post of user -->
+    <div>
+        <ul>
+            <% for(post of posts){ %>
+                <li>
+                    <p>
+                        <%= post.content %>
+                        <br/>
+                        <small>
+                            <!-- <%=// post.user.first_name %> -->
+                            <%= post.user %>
+                        </small>
+                    </p>
+                </li>
+            <% } %>
+        </ul>
+        
+    </div>
+</section>

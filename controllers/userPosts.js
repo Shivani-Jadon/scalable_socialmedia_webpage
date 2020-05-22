@@ -1,10 +1,34 @@
+const Post = require("../models/post_model");
+
 //display posting_page view when post is exported
 module.exports.post = function(req, res){
-    return res.render("posting_page", {title: "User's posts", user: "Shivani"});
+
+    // Post.find({}, function(err, posts){
+    //     if(err){    console.log("error in finding posts", err); return;
+    //     }
+    //     return res.render("posting_page", {title: "User's posts", posts : posts});
+    // });
+
+    // populate the user of each post (this is called pre-populate data)
+    Post.find({}).populate('user').exec(function(err, posts){
+        if(err){    console.log("error in finding posts", err); return;
+        }
+        return res.render("posting_page", 
+                            {title: "User's posts", posts : posts});
+    });
 }
 
-//display this when posting is exported
-module.exports.posting = function(req, res){
-    console.log("posting");
-    return res.end(`<h1>Routing action for user's post</h1>`);
+// getting data from post form and stroing it in database
+module.exports.create_post = function(req, res){
+    Post.create({
+        content : req.body.content,
+        user : req.user._id
+    }, function(err, post){
+        if(err){
+            console.log(`Error on posting : ${err}`);
+            return;
+        }
+
+        return res.redirect('back');
+    });
 }
