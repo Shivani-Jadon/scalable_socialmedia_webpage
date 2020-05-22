@@ -1,37 +1,43 @@
 <!-- view for user sign-in form -->
+<link rel="stylesheet" type="text/css" href="/css/signup.css">
 
 <form action="/create_account/add" id="signup-form" method="POST"> 
     <!-- input for first name of user -->
-    <label for="first_name">First name</label>
-    <br/>
+    <div>
+        <label for="first_name">First name</label>
     <input type="text" name="first_name" placeholder="Enter first name" required>
-    <br/>
+    </div>
+    
     <!-- input for first name of user -->
-    <label for="last_name">Last name</label>
-    <br/>
-    <input type="text" name="last_name" placeholder="Enter last name" required>
-    <br/>
+    <div>
+        <label for="last_name">Last name</label>
+        <input type="text" name="last_name" placeholder="Enter last name" required>
+    </div>
+    
     <!-- input for email -->
-    <label for="email">E-mail</label>
-    <br/>
-    <input type="email" name="email" placeholder="eg. example@gmail.com" required>
-    <br/>
+    <div>
+        <label for="email">E-mail</label>
+        <input type="email" name="email" placeholder="eg. example@gmail.com" required>
+    </div>
+
     <!-- input for password -->
-    <label for="password">Password</label>
-    <br/>
-    <input type="password" name="password" placeholder="***********" placeholder="Enter password" required>
-    <br/>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="***********" placeholder="Enter password" required>
+    </div>
+    
     <!-- input for confirm password -->
-    <label for="confirm_password">Confirm Password</label>
-    <br/>
+    <div>
+        <label for="confirm_password">Confirm Password</label>
     <input type="password" name="confirm_password" placeholder="***********" placeholder="Confirm password" required>
-    <br/>
+    </div>
+    
     <!-- submit button for login -->
     <button type="submit" form="signup-form" value="signup">signup</button>
 
     <!-- redirecting to login page -->
     <div id="new-user">
-        Already a user? 
+        Already a user? &nbsp;
         <a href="/login/user-login"> Login</a>
     </div>
 </form>

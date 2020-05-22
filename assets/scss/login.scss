@@ -1,0 +1,41 @@
+#login-form{
+    /* styling divs for input*/
+    div{
+        padding: 10px;
+        margin: 10px;
+        color: navy;
+        /*styling lables*/
+        label{
+            padding: 10px;
+        }
+        /*styling input box*/
+        input{
+            background-color: transparent;
+            border: 0;
+            border-bottom: 2px navy solid;
+            padding: 5px;
+        }
+    }
+    
+    /*button style and hover effect*/
+    button{
+        background-color: #8BC34A;
+        color: navy;
+        border: 2px navy solid;
+        border-radius: 0;
+        &:hover{
+            background-color: navy;
+            color: #C5E1A5;
+        }
+    }   
+    
+    #new-user{
+        color: black;
+        a{
+            color: navy;
+            &:hover{
+                color: #004D40;
+            }
+        }
+    }
+}

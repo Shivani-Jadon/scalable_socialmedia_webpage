@@ -1,0 +1,47 @@
+#login-form {
+  /* styling divs for input*/
+  /*button style and hover effect*/
+}
+
+#login-form div {
+  padding: 10px;
+  margin: 10px;
+  color: navy;
+  /*styling lables*/
+  /*styling input box*/
+}
+
+#login-form div label {
+  padding: 10px;
+}
+
+#login-form div input {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px navy solid;
+  padding: 5px;
+}
+
+#login-form button {
+  background-color: #8BC34A;
+  color: navy;
+  border: 2px navy solid;
+  border-radius: 0;
+}
+
+#login-form button:hover {
+  background-color: navy;
+  color: #C5E1A5;
+}
+
+#login-form #new-user {
+  color: black;
+}
+
+#login-form #new-user a {
+  color: navy;
+}
+
+#login-form #new-user a:hover {
+  color: #004D40;
+}

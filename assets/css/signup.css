@@ -1,0 +1,52 @@
+#signup-form {
+  /* styling divs for input*/
+  /*button style and hover effect*/
+}
+
+#signup-form div {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  color: navy;
+  /*styling lables*/
+  /*styling input box*/
+}
+
+#signup-form div label {
+  padding: 10px;
+  width: 100px;
+  text-align: left;
+}
+
+#signup-form div input {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px navy solid;
+  padding: 5px;
+}
+
+#signup-form button {
+  background-color: skyblue;
+  color: navy;
+  border: 2px navy solid;
+  border-radius: 0;
+  padding: 2px;
+}
+
+#signup-form button:hover {
+  background-color: navy;
+  color: skyblue;
+}
+
+#signup-form #new-user {
+  color: black;
+}
+
+#signup-form #new-user a {
+  margin: 0;
+  color: navy;
+}
+
+#signup-form #new-user a:hover {
+  color: skyblue;
+}

@@ -5,6 +5,7 @@
         <title>
             <%= title %>
         </title> 
+        <script src="https://kit.fontawesome.com/abc62f7ecd.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/css/layout.css" type="text/css">
         <%- style %>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +15,9 @@
         <!-- including partial for header in the layout -->
         <%- include('_header'); %>
 
-        <%- body %>
+        <main id="layout-main">
+            <%- body %>
+        </main>        
 
         <!-- including partial for footer in the layout -->
         <%- include('_footer'); %>

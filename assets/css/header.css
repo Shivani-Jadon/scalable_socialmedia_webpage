@@ -1,25 +1,44 @@
 /* styling header of the page */
 body header{
+    display: flex;
+    align-items: center;
     background-color: darkolivegreen;
     color: white;
     padding: 1rem;
 }
 
+body header div{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+h3{
+    color: #C5E1A5;
+    text-shadow: 0px 0px 5px black;
+    font-style: italic;
+}
+
 a{
-    color: #00BCD4;
-    margin: 20px;
+    color: #ffffe0;
+    margin: 10px;
 }
 
 a:hover{
-    color: white;
+    color: #8BC34A;
 }
 
 button{
-    background-color: cyan;
-    color: #E91E63;
-    border: 2px #E91E63 solid;
+    background-color: #C5E1A5;
+    color: #004D40;
+    border: 5px #8BC34A solid;
+    border-radius: 10px;
+    padding: 5px;
+    font-weight: bold;
+    box-shadow: 0px 0px 10px black;
 }
 
 button:hover{
-    background-color: black;
+    background-color: white;
 }

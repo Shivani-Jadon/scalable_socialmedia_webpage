@@ -1,16 +1,19 @@
 <!-- view for login form -->
+<link rel="stylesheet" type="text/css" href="/css/login.css">
 
 <form action="/check_account/create_session" id="login-form" method="POST">
     <!-- input for email -->
-    <label for="email">E-mail</label>
-    <br/>
-    <input type="email" name="email" placeholder="Enter email eg. example@gmail.com" required>
-    <br/>
+    <div>
+        <label for="email">E-mail</label>
+        <input type="email" name="email" placeholder="eg. example@gmail.com" required>
+    </div>
+
     <!-- input for password -->
-    <label for="password">Password</label>
-    <br/>
-    <input type="password" name="password" placeholder="***********" placeholder="Enter password" required>
-    <br/>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="***********" placeholder="Enter password" required>
+    </div>
+    
     <!-- submit button for login -->
     <button type="submit" form="login-form" value="login">Login</button>
 
