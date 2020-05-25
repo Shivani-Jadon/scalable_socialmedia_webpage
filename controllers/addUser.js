@@ -14,7 +14,7 @@ module.exports.add_new_user = function(req, res){
 
         if(err){
                 console.log(`Error in locating user in database : ${err}`);
-                return res.render("error");
+                return res.render("error", {layout : false});
         }
 
         // if the user doesn't exist then create new user account in the database
@@ -23,7 +23,7 @@ module.exports.add_new_user = function(req, res){
                 if(err)
                 {
                     console.log(`Error in updating/creating user data in database ${err}`);
-                    return res.render("error");
+                    return res.render("error", {layout : false});
                 } 
                 // after sign-in the user is redirected to the login page 
                 return res.redirect("/login/user-login");                     

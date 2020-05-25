@@ -17,7 +17,7 @@
     </h3>
     
     <form action="/posts/create_post" id="posting-form" name="posting-form" method="POST">
-        <textarea name="content" cols="30" rows="5"></textarea>
+        <textarea name="content" cols="30" rows="5" required></textarea>
         <br/>
         <input type="submit" value="Post">
     </form>
@@ -35,6 +35,15 @@
                             <%=  post.userInfo.last_name %>
                         </small>
                     </p>
+                    <% if(locals.user) { %>
+                    <div class="post-comments">
+                        <form action="/posts/comment" method="POST">
+                            <input type="text" name="content" placeholder="Comment here....">
+                            <input type="hidden" name="post" value="<%= post._id %>">
+                            <input type="submit" value="Add Comment">
+                        </form>
+                    </div>
+                    <% } %>
                 </li>
             <% } %>
         </ul>
