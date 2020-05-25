@@ -10,9 +10,11 @@ module.exports.post = function(req, res){
     // });
 
     // populate the user of each post (this is called pre-populate data)
-    Post.find({}).populate('user').exec(function(err, posts){
-        if(err){    console.log("error in finding posts", err); return;
+    Post.find({}).populate('userInfo').exec(function(err, posts){
+        if(err){    console.log("error in finding posts", err); 
+                    return res.render("error");
         }
+    
         return res.render("posting_page", 
                             {title: "User's posts", posts : posts});
     });
@@ -22,7 +24,7 @@ module.exports.post = function(req, res){
 module.exports.create_post = function(req, res){
     Post.create({
         content : req.body.content,
-        user : req.user._id
+        userInfo : req.user._id
     }, function(err, post){
         if(err){
             console.log(`Error on posting : ${err}`);

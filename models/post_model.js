@@ -5,11 +5,15 @@ const postSchema = new mongoose.Schema({
         type: String,
         required : true
     },
-    user : {
+    userInfo : {
         // refering to unique object id
         type : mongoose.Schema.Types.ObjectId, 
         ref : 'userDetails'
-    }
+    },
+    comments : [{
+        type : mongoose.Schema.Types.ObjectId, 
+        ref : 'comment'
+    }]
 },{
         timestamps : true
     }
