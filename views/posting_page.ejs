@@ -28,7 +28,13 @@
             <% for(post of posts){ %>
                 <li>
                     <p>
-                        <%= post.content %>
+                        <%= post.content %> &nbsp;
+                        <!-- tag for deleting user's post -->
+                        <% if(locals.user && (locals.user.id == post.userInfo.id)) { %> 
+                            <a href="/posts/delete/<%= post.id %>">
+                                <b>x</b>
+                            </a>
+                        <% } %>                        
                         <br/>
                         <small>
                             <%= post.userInfo.first_name %>
@@ -44,6 +50,20 @@
                         </form>
                     </div>
                     <% } %>
+
+                    <div class="comment-container">
+                        <ul class="comment-list">
+                            <% for (comment of post.comments) { %>
+                                <li>
+                                    <%= comment.content %>
+                                    <br/>
+                                    <small>
+                                        <%= comment.user.first_name %>
+                                    </small>
+                                </li>
+                            <% } %>
+                        </ul>
+                    </div>
                 </li>
             <% } %>
         </ul>

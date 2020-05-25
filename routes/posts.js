@@ -15,4 +15,8 @@ route.post("/create_post", userPost.create_post);
 const comment = require("../controllers/post_comment");
 route.post("/comment", passport.checkAuthentication, comment.userComment);
 
+// controller for deleting user's post
+const destroy = require("../controllers/deletePost");
+route.get("/delete/:id", passport.checkAuthentication, destroy.destroy_post);
+
 module.exports = route;

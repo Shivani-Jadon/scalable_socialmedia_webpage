@@ -6,6 +6,7 @@ module.exports.userComment = function(req, res){
     Post.findById(req.body.post, function(err, post){
 
         if(post){
+            console.log("post id", post._id);
             Comment.create({
                 content : req.body.content,
                 post : req.body.post,
@@ -16,8 +17,9 @@ module.exports.userComment = function(req, res){
                     return res.render("error", {layout : false});
                 }
 
+                console.log(comment);
                 post.comments.push(comment);
-                post.save;
+                post.save();
                 return res.redirect("back");
             })
         }
