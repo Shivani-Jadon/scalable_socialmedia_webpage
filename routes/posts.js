@@ -16,7 +16,11 @@ const comment = require("../controllers/post_comment");
 route.post("/comment", passport.checkAuthentication, comment.userComment);
 
 // controller for deleting user's post
-const destroy = require("../controllers/deletePost");
-route.get("/delete/:id", passport.checkAuthentication, destroy.destroy_post);
+const remove_post = require("../controllers/deletePost");
+route.get("/delete-post/:id", passport.checkAuthentication, remove_post.destroy_post);
+
+// controller for deleting user's comment
+const remove_comment = require("../controllers/deleteComment");
+route.get("/delete-comment/:id", passport.checkAuthentication, remove_comment.destroy_comment);
 
 module.exports = route;

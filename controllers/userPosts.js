@@ -23,12 +23,12 @@ module.exports.post = function(req, res){
             return res.render("error", {layout : false});   //error page would be rendered without default layout
         }
     
-        for(post of posts){
-            for(comment of post.comments){
-                console.log(comment);
-                //console.log(comment.content);
-            }
-        }
+        // for(post of posts){
+        //     for(comment of post.comments){
+        //         console.log(comment);
+        //         //console.log(comment.content);
+        //     }
+        // }
         return res.render("posting_page", 
                             {title: "User's posts", posts : posts});
     });
