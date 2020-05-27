@@ -4,7 +4,7 @@ body{
     color: #E91E63;
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 #layout-main{
