@@ -12,7 +12,7 @@
         <% if(locals.user) { %>
             <!-- for user profile page -->
             <span>
-                <a href="/user/profile"><%= user.first_name %> <%= user.last_name %></a>
+                <a href="/user/profile/<%= user.id %>"><%= user.first_name %> <%= user.last_name %></a>
             </span>
             <!-- for usr post page -->
             <span>

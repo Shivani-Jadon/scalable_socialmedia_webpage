@@ -3,4 +3,26 @@
     <h1>
         Welcome 
     </h1>
+
+    <section id="user-friends">
+        <h3>
+            Friends
+        </h3>
+        <% if(locals.user) { %> 
+        <ul>
+            <% for (u of all_users){ %> 
+                <% if(locals.user.id != u.id) { %>
+                <li>
+                     
+                    <a href="/user/profile/<%= u.id %>"> 
+                        <%= u.first_name %>
+                        <%= u.last_name %>
+                    </a>
+                    
+                </li> 
+                <% } %>   
+            <% } %> 
+        </ul>
+        <% } %>
+    </section>
     
