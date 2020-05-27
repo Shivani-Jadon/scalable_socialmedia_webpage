@@ -6,11 +6,24 @@
     <h1>
         Welcome <%= profile_user.first_name %>
     </h1>
-
-    <h2>
-        You are viewing <%= title %> page
-    </h2>
     
     <h3>
         <%= profile_user.email %>
     </h3>
+
+    <% if(user.id == profile_user.id) { %> 
+    <section id="updation-form">
+        <form action="/user/update/<%= profile_user.id %>" method="POST">
+            <label for="first_name">Enter new first name</label>
+            <input type="text" name="first_name" placeholder="new first name" value="<%= profile_user.first_name %>" required>
+            <br/>
+            <label for="last_name">Enter new last name</label>
+            <input type="text" name="last_name" placeholder="new last name" value="<%= profile_user.last_name %>" required>
+            <br/>
+            <label for="email">Enter new email</label>
+            <input type="text" name="email" placeholder="new email" value="<%= profile_user.email %>" required>
+            <br/>
+            <input type="submit" value="submit"> 
+        </form>
+    </section>
+    <% } %>
