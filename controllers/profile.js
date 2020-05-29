@@ -16,6 +16,7 @@ module.exports.profile_of_user = async function(req, res){
    
 }
 
+// controller for updating user information (name and email)
 module.exports.update_user = async function(req, res){
 
     // function callback using sync await
@@ -25,14 +26,15 @@ module.exports.update_user = async function(req, res){
 
             await User.findByIdAndUpdate(req.params.id, req.body);
 
+            req.flash('success', "User successfully updated");
             return res.redirect("back");
         }else{
             return res.status("401").send("unauthorised");
         };
 
     }catch(err){
-        console.log(`error in displaying profile page : ${err}`);
-        return res.render("error", {layout : false});
+        req.flash('error',`error in displaying profile page : ${err}`);
+        return res.redirect("back");
     }
 
     // if(req.user.id == req.params.id){

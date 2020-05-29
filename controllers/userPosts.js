@@ -30,7 +30,7 @@ module.exports.post = async function(req, res){
 
 }
 
-// getting data from post form and stroing it in database
+// getting data from post form and storing it in database
 module.exports.create_post = async function(req, res){
     // using async await for callback
     try{
@@ -40,11 +40,13 @@ module.exports.create_post = async function(req, res){
             userInfo : req.user._id
         });
 
+        // flash success msg
+        req.flash("success", "Post succesfully added");
         return res.redirect('back');
 
     }catch(err){
-        console.log(`Error on posting : ${err}`);
-        return res.render("error", {layout : false});
+        req.flash("error", err);
+        return res.redirect("back");
     }
 
     // Post.create({

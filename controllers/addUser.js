@@ -8,6 +8,7 @@ module.exports.add_new_user =async  function(req, res){
         // check if password and confirm password are equal or not
         if(req.body.password != req.body.confirm_password)
         {
+            req.flash("error", "password and confirm password are not equal");
             return res.redirect("back");
         }
         // if password and confirm password are equal then find user
@@ -17,6 +18,7 @@ module.exports.add_new_user =async  function(req, res){
         if(!user){
             await user_detail.create(req.body);
             
+            req.flash("success", "user account successfully created");
             // after sign-in the user is redirected to the login page 
             return res.redirect("/login/user-login");                     
            
@@ -24,12 +26,13 @@ module.exports.add_new_user =async  function(req, res){
         // if the user with the same email exist in the database then the user is asked to sigin with a new usename 
         // or can go to login page for logging in the system
         else{
+            req.flash("error", "the user already exist");
             return res.redirect("back");
         }
 
     }catch(err){
-        console.log(`Error in locating/updating/creating user data in database ${err}`);
-        return res.render("error", {layout : false});
+        req.flash("error", err);
+        return res.redirect("back");
     }
     
 }

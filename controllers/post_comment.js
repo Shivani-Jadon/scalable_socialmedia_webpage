@@ -17,13 +17,15 @@ module.exports.userComment = async function(req, res){
 
             post.comments.push(comment);
             post.save();
+            // flash success msg
+            req.flash("success", "Comment succesfully added");
             return res.redirect("back");
         }
 
     }catch(err){
         
-            console.log(`Error in displaying comments : ${err}`);
-            return res.render("error", {layout : false});
+        req.flash("error", err);
+        return res.redirect("back");
         
     }
     // callback chaining

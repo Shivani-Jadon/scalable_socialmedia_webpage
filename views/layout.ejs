@@ -5,6 +5,8 @@
         <title>
             <%= title %>
         </title> 
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
         <script src="https://kit.fontawesome.com/abc62f7ecd.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/css/layout.css" type="text/css">
         <%- style %>
@@ -22,6 +24,42 @@
         <!-- including partial for footer in the layout -->
         <%- include('_footer'); %>
 
+        <!-- displaying flash msgs at front-end -->
+        <script>            
+        // success flash msg
+        <% if(flash.success && flash.success.length > 0) { %>
+            new Noty({
+                type : 'success',
+                layout : "topRight",
+                text: "<%= flash.success %>",
+                theme : "metroui",
+                timeout : 3000
+            }).show();
+        <% } %>
+
+        // error flash msg
+        <% if(flash.error && flash.error.length > 0) { %>
+            new Noty({
+                type : 'error',
+                layout : "topRight",
+                text: "<%= flash.error %>",
+                theme : "metroui",
+                timeout : 3000
+            }).show();
+        <% } %>
+
+        // alert flash msg
+        <% if(flash.warning && flash.warning.length > 0) { %>
+            new Noty({
+                type : 'alert',
+                layout : "topRight",
+                text: "<%= flash.alert %>",
+                theme : "metroui",
+                timeout : 3000
+            }).show();
+        <% } %>
+        </script>
+        
         <%- script %>
     </body>
     

@@ -13,10 +13,14 @@ module.exports.destroy_post = async function(req, res){
             post.remove();
 
             await Comment.deleteMany({post: req.params.id});
+            // flash success msg
+            req.flash("success", "Post removed");
 
             return res.redirect("back");
     
         }else{
+            
+            req.flash("error", "You are not authorised to remove Post");
             return res.redirect("back");
         }
 

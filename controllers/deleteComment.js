@@ -7,8 +7,11 @@ module.exports.destroy_comment = function(req, res){
         
         if(comment.user == req.user.id){
             let post_id = comment.post; 
+            
             // removing comment
             comment.remove();
+            // flash success msg
+            req.flash("success", "Comment removed");
 
             // removing comment from the database of post
             Post.findByIdAndUpdate(post_id, {$pull: {comments : req.params.id}}, function(err, post){
@@ -17,6 +20,8 @@ module.exports.destroy_comment = function(req, res){
             });
         }
         else{
+            // flash error msg
+            req.flash("error", "You are not authorised to remove comments");
             return res.redirect("back");
         }
     })
