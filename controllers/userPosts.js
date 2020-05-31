@@ -15,6 +15,7 @@ module.exports.post = async function(req, res){
     try{
 
         let posts = await Post.find({})
+                        .sort('-createdAt')
                         .populate('userInfo')
                         .populate({path : 'comments',       
                                 populate : {
@@ -35,10 +36,19 @@ module.exports.create_post = async function(req, res){
     // using async await for callback
     try{
 
-        Post.create({
+        let post = await Post.create({
             content : req.body.content,
             userInfo : req.user._id
         });
+
+        if(req.xhr){
+            return res.status('200').json(
+                {
+                    data : {post: post},
+                    message : "post created!"
+                }
+            );
+        }
 
         // flash success msg
         req.flash("success", "Post succesfully added");

@@ -1,9 +1,9 @@
-<li>
+<li id="user-post-id-<%= post.id %>">
     <p>
         <%= post.content %> &nbsp;
         <!-- tag for deleting user's post -->
         <% if(locals.user && (locals.user.id == post.userInfo.id)) { %> 
-            <a href="/posts/delete-post/<%= post.id %>">
+            <a class="post-del-btn" href="/posts/delete-post/<%= post.id %>">
                 <b>x</b>
             </a>
         <% } %>                        

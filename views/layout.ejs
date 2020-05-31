@@ -7,6 +7,7 @@
         </title> 
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://kit.fontawesome.com/abc62f7ecd.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/css/layout.css" type="text/css">
         <%- style %>
@@ -51,9 +52,9 @@
         // alert flash msg
         <% if(flash.warning && flash.warning.length > 0) { %>
             new Noty({
-                type : 'alert',
+                type : 'warning',
                 layout : "topRight",
-                text: "<%= flash.alert %>",
+                text: "<%= flash.warning %>",
                 theme : "metroui",
                 timeout : 3000
             }).show();
