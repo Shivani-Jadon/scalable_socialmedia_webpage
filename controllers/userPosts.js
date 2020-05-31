@@ -22,6 +22,17 @@ module.exports.post = async function(req, res){
                                     path : 'user' 
                                 }});
 
+
+        if(req.xhr){
+
+            return res.status('200').json(
+                {
+                    data : {posts: posts},
+                    message : "posts displayed!"
+                }
+            );
+        }
+
         return res.render("posting_page", {title: "User's posts", posts : posts});
         
     }catch(err){   
@@ -41,6 +52,11 @@ module.exports.create_post = async function(req, res){
             userInfo : req.user._id
         });
 
+        // populating the newly created post
+        post = await Post.populate(post, {path: 'userInfo', select: ['first_name', 'last_name']});
+
+        //console.log(post);
+                                                            
         if(req.xhr){
             return res.status('200').json(
                 {

@@ -19,7 +19,7 @@ module.exports.destroy_post = async function(req, res){
                     data : {
                         post_id : req.params.id 
                     },
-                    message : "Post deleted!"
+                    message : "Post deleted!",
                 });
             }
 

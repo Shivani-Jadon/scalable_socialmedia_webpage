@@ -8,3 +8,4 @@ module.exports.flash_session = function(req, res, next){
 
     next();
 }
+
