@@ -12,7 +12,8 @@
                 success : function(data){
                     console.log(data);
                     let newPost = newPostDOM(data.data.post);
-                    $('#post-list-container>ul').prepend(newPost);        
+                    $('#post-list-container>ul').prepend(newPost);  
+                    deletePostDOM($(` .post-del-btn`, newPost));      
                 },
                 error : function(error){
                     console.log(error.responseText);
@@ -20,6 +21,7 @@
             })
         });
     }
+
 
     // method to create a post in DOM
     let newPostDOM = function(post){
@@ -58,6 +60,27 @@
         </div>
     </li>`)
     }
+
+
+    // method to delete a post from DOM
+    let deletePostDOM = function(deleteLink){
+
+        $(deleteLink).click(function(event){
+            event.preventDefault();
+
+            $.ajax({
+                type : 'get',
+                url : $(deleteLink).prop('href'),
+                success : function(data){
+                    $(`#user-post-id-${data.data.post_id}`).remove();
+                },
+                error : function(error){
+                    console.log(error.responseText);
+                }
+            });
+        });
+    }
+
 
     createPost();
 }

@@ -8,11 +8,21 @@ module.exports.destroy_post = async function(req, res){
         let post = await Post.findById(req.params.id);
 
         // .id will convert id object to string for comparision
-        if(req.params.id == post.id)
+        if(post.userInfo == req.user.id)
         {
             post.remove();
 
             await Comment.deleteMany({post: req.params.id});
+            
+            if(req.xhr){
+                return res.status(200).json({
+                    data : {
+                        post_id : req.params.id 
+                    },
+                    message : "Post deleted!"
+                });
+            }
+
             // flash success msg
             req.flash("success", "Post removed");
 
