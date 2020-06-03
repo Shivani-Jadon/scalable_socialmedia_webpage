@@ -9,7 +9,7 @@
         noty_msg.show();
     }
 
-    // adding deletion functionality to previous pages
+    // adding deletion functionality to earlier posts
     let addDeletion = function(){
 
         $.ajax({
@@ -18,13 +18,20 @@
             success : function(data){
                 //console.log(data.data.posts);
                 let all_posts = data.data.posts;
-                for (let post of all_posts){
-                    deletePostDOM($(` .post-del-btn`, post));  
+                for (let post of all_posts){ 
+                    
+                    let prevPost = newPostDOM(post);
+                    console.log(prevPost);
+                    deletePostDOM($(` .post-del-btn`, prevPost));  
                 }
+            },
+            error : function(error){
+                console.log(error.responseText);
             }
         })
     }
 
+    // calling deletion 
     addDeletion();
 
     // adding/creating new post
@@ -42,11 +49,12 @@
                     //console.log(data);
 
                     let newPost = newPostDOM(data.data.post);
+                    
                     $('#post-list-container>ul').prepend(newPost); 
                     // function callback for deleting post
                     deletePostDOM($(` .post-del-btn`, newPost));  
-                    let msg = "new post created by your profile";
-                    showNotification(msg);    
+                    let flashMsg = "new post created by your profile";
+                    showNotification(flashMsg);    
                 },
                 error : function(error){
                     console.log(error.responseText);
@@ -106,8 +114,8 @@
                 url : $(deleteLink).prop('href'),
                 success : function(data){
                     $(`#user-post-id-${data.data.post_id}`).remove();
-                    let msg = "post has been removed";
-                    showNotification(msg);
+                    let flashMsg = "post has been removed";
+                    showNotification(flashMsg);
                 },
                 error : function(error){
                     console.log(error.responseText);
@@ -116,6 +124,7 @@
         });
     }
 
-
+    // calling createPost
     createPost();
+    
 }

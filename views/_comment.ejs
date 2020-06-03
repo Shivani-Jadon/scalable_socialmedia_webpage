@@ -1,4 +1,4 @@
-<li>
+<li id="user-comment-<%= comment.id %>">
     <%= comment.content %>
     <% if(locals.user && (locals.user.id == comment.user.id)) { %> 
         <a href="/posts/delete-comment/<%= comment.id %>" >

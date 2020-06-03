@@ -17,11 +17,12 @@ module.exports.post = async function(req, res){
         let posts = await Post.find({})
                         .sort('-createdAt')
                         .populate('userInfo')
-                        .populate({path : 'comments',       
+                        .populate({path : 'comments', options: { sort: '-createdAt' },       
                                 populate : {
                                     path : 'user' 
                                 }});
 
+       
 
         if(req.xhr){
 

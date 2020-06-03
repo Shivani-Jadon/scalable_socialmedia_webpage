@@ -17,6 +17,21 @@ module.exports.userComment = async function(req, res){
 
             post.comments.push(comment);
             post.save();
+
+            // populating the newly created post
+            comment = await Comment.populate(comment, {path: 'user', select: ['first_name', 'last_name']});
+        
+            console.log(comment);
+
+            if(req.xhr){
+                return res.status('200').json(
+                    {
+                        data : {comment: comment},
+                        message : "comment created!"
+                    }
+                );
+            }
+
             // flash success msg
             req.flash("success", "Comment succesfully added");
             return res.redirect("back");
