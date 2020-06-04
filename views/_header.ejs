@@ -8,8 +8,10 @@
         SocialBook
     </h3>    
 
+    
     <div>
         <% if(locals.user) { %>
+            <img src="<%= user.avatar%>" alt="<%= user.name %>" width="100">
             <!-- for user profile page -->
             <span>
                 <a href="/user/profile/<%= user.id %>"><%= user.first_name %> <%= user.last_name %></a>

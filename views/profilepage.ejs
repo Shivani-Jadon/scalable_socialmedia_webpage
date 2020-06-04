@@ -13,7 +13,7 @@
 
     <% if(user.id == profile_user.id) { %> 
     <section id="updation-form">
-        <form action="/user/update/<%= profile_user.id %>" method="POST">
+        <form action="/user/update/<%= profile_user.id %>" method="POST" enctype="multipart/form-data">
             <label for="first_name">Enter new first name</label>
             <input type="text" name="first_name" placeholder="new first name" value="<%= profile_user.first_name %>" required>
             <br/>
@@ -23,7 +23,8 @@
             <label for="email">Enter new email</label>
             <input type="text" name="email" placeholder="new email" value="<%= profile_user.email %>" required>
             <br/>
-            <input type="submit" value="submit"> 
+            <input type="file" name="avatar" placeholder="User's profile pic"/>
+            <input type="submit" value="update"> 
         </form>
     </section>
     <% } %>

@@ -35,6 +35,8 @@ app.use(cookie_parser());
 
 // directing app to assets folder for static files
 app.use(express.static('./assets'));
+// directing path for uploads 
+app.use('/upload',express.static(__dirname + '/upload'));
 
 //loading layouts for ejs views
 app.use(express_layout);
