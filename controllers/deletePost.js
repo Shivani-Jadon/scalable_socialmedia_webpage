@@ -24,7 +24,7 @@ module.exports.destroy_post = async function(req, res){
             }
 
             // flash success msg
-            req.flash("success", "Post removed");
+            // req.flash("success", "Post removed");
 
             return res.redirect("back");
     
@@ -35,8 +35,8 @@ module.exports.destroy_post = async function(req, res){
         }
 
     }catch(err){
-        console.log("error in deleting posts", err); 
-        return res.render("error", {layout : false});
+        req.flash("error", "You are not authorised to remove Post");
+        return res.redirect("back");
     }
         
 }

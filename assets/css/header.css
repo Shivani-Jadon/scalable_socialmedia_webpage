@@ -1,6 +1,7 @@
 /* styling header of the page */
 body header{
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     background-color: darkolivegreen;
     color: white;
@@ -8,13 +9,14 @@ body header{
 }
 
 body header div{
-    width: 100%;
+    min-width: 80%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 
 h3{
+    min-width: 20%;
     color: #C5E1A5;
     text-shadow: 0px 0px 5px black;
     font-style: italic;

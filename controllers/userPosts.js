@@ -24,16 +24,6 @@ module.exports.post = async function(req, res){
 
        
 
-        if(req.xhr){
-
-            return res.status('200').json(
-                {
-                    data : {posts: posts},
-                    message : "posts displayed!"
-                }
-            );
-        }
-
         return res.render("posting_page", {title: "User's posts", posts : posts});
         
     }catch(err){   

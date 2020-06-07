@@ -10,14 +10,25 @@ module.exports.destroy_comment = function(req, res){
             
             // removing comment
             comment.remove();
-            // flash success msg
-            req.flash("success", "Comment removed");
 
             // removing comment from the database of post
+            Post.findByIdAndUpdate(post_id, {$pull: {comments : req.params.id}});
+
+            if(req.xhr){
+                return res.status(200).json({
+                    data : {
+                        comment_id : req.params.id 
+                    },
+                    message : "Comment deleted!",
+                });
+            }
+            // flash success msg
+            req.flash("success", "Comment removed");
             Post.findByIdAndUpdate(post_id, {$pull: {comments : req.params.id}}, function(err, post){
 
-                return res.redirect("back");                
-            });
+                 return res.redirect("back");                
+             });
+            
         }
         else{
             // flash error msg

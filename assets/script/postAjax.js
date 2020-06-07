@@ -9,30 +9,7 @@
         noty_msg.show();
     }
 
-    // adding deletion functionality to earlier posts
-    let addDeletion = function(){
-
-        $.ajax({
-            type : 'get',
-            url : '/posts/user_posts',
-            success : function(data){
-                //console.log(data.data.posts);
-                let all_posts = data.data.posts;
-                for (let post of all_posts){ 
-                    
-                    let prevPost = newPostDOM(post);
-                    console.log(prevPost);
-                    deletePostDOM($(` .post-del-btn`, prevPost));  
-                }
-            },
-            error : function(error){
-                console.log(error.responseText);
-            }
-        })
-    }
-
-    // calling deletion 
-    addDeletion();
+   
 
     // adding/creating new post
     let createPost = function(){
@@ -126,5 +103,20 @@
 
     // calling createPost
     createPost();
+
+
+    // adding deletion functionality to earlier posts
+    let addDeletion = function(){
+        $('#post-list-container>ul>li').each(function(){
+            let self = $(this);
+            let deleteButton = $(' .post-del-btn', self);
+            //console.log(deleteButton);
+            deletePostDOM(deleteButton);
+
+        });
+    }    
+
+    // calling addDeletion
+    addDeletion();
     
 }
