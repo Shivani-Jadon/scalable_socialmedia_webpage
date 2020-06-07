@@ -42,6 +42,7 @@
     }
 
 
+    // function to delete comment
     let deleteComment = function(deleteLink){
     
         $(deleteLink).click(function(event){
@@ -87,12 +88,34 @@
             let self = $(this);
             // get the post's id by splitting the id attribute
             let postId = self.prop('id').split("-")[3];
-            
+        
+            // function call to add new comment to the post
             createComment(postId);
-           
+            
         });
         
     }
 
+    // add new comment to posts
     addComment();
+
+    // comment deletion functionality to earlier comments
+    let deletePrevComment = function(){
+        
+        $('.comment-container>ul>li').each(function(){
+
+            // iterating through elements of the list
+            let self = $(this);
+            console.log(self, count);
+                           
+            let deleteBtn = $(` .comment-del-btn`, self);
+            //console.log(deleteBtn);
+            deleteComment(deleteBtn);
+                        
+        });        
+    }
+
+    // calling function to delete previous comments 
+    deletePrevComment();
+    
 }

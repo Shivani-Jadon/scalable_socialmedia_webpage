@@ -23,6 +23,7 @@ module.exports.destroy_post = async function(req, res){
                 });
             }
 
+            // incase the ajax request isn't responded
             // flash success msg
             // req.flash("success", "Post removed");
 
