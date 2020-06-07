@@ -23,8 +23,13 @@
             <label for="email">Enter new email</label>
             <input type="text" name="email" placeholder="new email" value="<%= profile_user.email %>" required>
             <br/>
-            <input type="file" name="avatar" placeholder="User's profile pic"/>
+            <input type="file" id="avatar" name="avatar" placeholder="User's profile pic" />
+            <img id="preview-img"/>
+            
             <input type="submit" value="update"> 
         </form>
     </section>
+
     <% } %>
+
+<script type="text/javascript" src="/script/preview.js"></script>

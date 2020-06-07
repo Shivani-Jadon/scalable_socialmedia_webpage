@@ -5,3 +5,9 @@ body{
     color: darkolivegreen;
     text-align: center;
 }
+
+#preview-img{
+    display: none;
+    max-height: 30vh;
+    margin: auto;
+}
