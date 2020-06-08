@@ -8,7 +8,8 @@ const db = require("./config/mongoose");
 const session = require('express-session');
 // importing passport for authentication
 const passport = require('passport');
-const LocalStrategy = require("./config/passport_local_strategy");
+const LocalStrategy = require("./config/passport_local_strategy");      // setting up local strategy
+const JwtStrategy = require("./config/jwt_strategy");
 // for storing session cookie in database
 const MongoStore = require('connect-mongo')(session);
 // library for sass middleware
