@@ -1,5 +1,5 @@
 {
-    console.log("comment");
+    
     // noty object for notification
     let noty_msg = new Noty({type : 'success',
                             timeout : 1000});
@@ -106,7 +106,6 @@
 
             // iterating through elements of the list
             let self = $(this);
-            console.log(self, count);
                            
             let deleteBtn = $(` .comment-del-btn`, self);
             //console.log(deleteBtn);

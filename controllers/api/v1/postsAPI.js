@@ -27,9 +27,9 @@ module.exports.destroy = async function(req, res){
 
         let post = await Post.findById(req.params.id);
 
-        // .id will convert id object to string for comparision
-        // if(post.userInfo == req.user.id)
-        // {
+        //.id will convert id object to string for comparision
+        if(post.userInfo == req.user.id)
+        {
             post.remove();
 
             await Comment.deleteMany({post: req.params.id});
@@ -39,11 +39,12 @@ module.exports.destroy = async function(req, res){
                 message : "Post deleted successfully"
             });
     
-        // }else{
+        }else{
             
-        //     req.flash("error", "You are not authorised to remove Post");
-        //     return res.redirect("back");
-        // }
+            return res.json(401, {
+                message : "Invalid token || You cannot delete this post"
+            });
+        }
 
     }catch(err){
         console.log("******", err);
