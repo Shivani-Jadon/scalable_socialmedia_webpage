@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("../../../models/userInfo_model");
 
+// create session using jwt authentication
 module.exports.create_session = async function(req, res){
 
     try{

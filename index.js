@@ -9,7 +9,8 @@ const session = require('express-session');
 // importing passport for authentication
 const passport = require('passport');
 const LocalStrategy = require("./config/passport_local_strategy");      // setting up local strategy
-const JwtStrategy = require("./config/jwt_strategy");
+const JwtStrategy = require("./config/jwt_strategy");                   // seetting up jet strategy
+const GoogleStrategy = require("./config/google_strategy_passport");
 // for storing session cookie in database
 const MongoStore = require('connect-mongo')(session);
 // library for sass middleware

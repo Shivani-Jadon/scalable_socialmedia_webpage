@@ -37,7 +37,6 @@ route.use('/create_account', require("./create_account"));
 route.use('/check_account', require("./check_account"));
 
 
-
 // route to api
 route.use('/api', require("./api"));
 

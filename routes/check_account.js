@@ -12,4 +12,13 @@ route.post("/create_session", passport.authenticate(
     {failureRedirect: '/login/user-login'}
     ),  check_user.verify_user  );
 
+
+
+// routing for google authentication
+// providing strategy and scope for authentication
+route.get('/authenticate/google', passport.authenticate('google', {scope : ['profile', 'email']}));
+// route for callback function
+route.get('/authenticate/google/callback', passport.authenticate('google', {failureRedirect : "/login/user-login"}),
+                                            check_user.verify_user);
+    
 module.exports =  route;
