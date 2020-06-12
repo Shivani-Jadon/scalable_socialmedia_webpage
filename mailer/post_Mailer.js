@@ -1,7 +1,7 @@
 const nodeMailer = require("../config/nodemailer");
 
 // another way of exporting
-exports.postMailer = (post) =>{
+exports.newPost = (post) =>{
 
     console.log("Inside nodeMailer", post);
 

@@ -1,5 +1,7 @@
 const Post = require("../models/post_model");
 const postmailer = require("../mailer/post_Mailer");
+const queue = require("../config/kue");
+const post_email_worker = require("../workers/post_email_workers");
 
 //display posting_page view when post is exported
 module.exports.post = async function(req, res){
@@ -48,7 +50,16 @@ module.exports.create_post = async function(req, res){
         post = await Post.populate(post, {path: 'userInfo', select: ['first_name', 'last_name', 'email']});
 
         // adding newly created post to mailer
-        postmailer.postMailer(post);
+        //postmailer.newPost(post);
+        // Creating a new job and queuing it whenever a POST is published and sent an email
+        let job = queue.create('emails', post).save(function(err){
+            if(err){
+                console.log("Error in creating new job", err);
+                return;
+            }
+
+            console.log("New job queued ---> ", job.id);
+        })
 
         //console.log(post);
                                                             

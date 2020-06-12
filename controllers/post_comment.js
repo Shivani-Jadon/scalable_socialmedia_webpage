@@ -27,7 +27,7 @@ module.exports.userComment = async function(req, res){
             // sending details to commentMailer
             //comment_mailer.newComment(comment);
 
-            // Creating a new job and queuing it whenever a comment is published and sent an email
+            // Creating a new job and queuing it whenever a COMMENT is published and sent an email
             // a new queue is created if it is not present or a new job is inserted in the queue
             // create method takes queue name and data 
             // after saving the queue a callback function is executed
