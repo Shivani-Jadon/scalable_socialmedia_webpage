@@ -1,4 +1,5 @@
 const Post = require("../models/post_model");
+const postmailer = require("../mailer/post_Mailer");
 
 //display posting_page view when post is exported
 module.exports.post = async function(req, res){
@@ -44,7 +45,10 @@ module.exports.create_post = async function(req, res){
         });
 
         // populating the newly created post
-        post = await Post.populate(post, {path: 'userInfo', select: ['first_name', 'last_name']});
+        post = await Post.populate(post, {path: 'userInfo', select: ['first_name', 'last_name', 'email']});
+
+        // adding newly created post to mailer
+        postmailer.postMailer(post);
 
         //console.log(post);
                                                             
