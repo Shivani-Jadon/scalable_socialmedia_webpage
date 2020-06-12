@@ -1,6 +1,8 @@
 const Comment = require("../models/comment_model");
 const Post = require("../models/post_model");
 const comment_mailer = require("../mailer/comment_Mailer");
+const queue = require("../config/kue");
+const commentEmailWorker = require("../workers/comment_email_workers");
 
 module.exports.userComment = async function(req, res){
 
@@ -21,8 +23,22 @@ module.exports.userComment = async function(req, res){
 
             // populating the newly created post
             comment = await Comment.populate(comment, {path: 'user', select: ['first_name', 'last_name', 'email']});
+            
             // sending details to commentMailer
-            comment_mailer.commentMailer(comment);
+            //comment_mailer.newComment(comment);
+
+            // Creating a new job and queuing it whenever a comment is published and sent an email
+            // a new queue is created if it is not present or a new job is inserted in the queue
+            // create method takes queue name and data 
+            // after saving the queue a callback function is executed
+            let job = queue.create('emails', comment).save(function(err){
+                if(err){
+                    console.log("Error in creating new job", err);
+                    return;
+                }
+
+                console.log("New job queued ---> ", job.id);
+            })
         
             //console.log(comment);
 
