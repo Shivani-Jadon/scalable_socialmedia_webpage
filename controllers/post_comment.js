@@ -1,6 +1,6 @@
 const Comment = require("../models/comment_model");
 const Post = require("../models/post_model");
-const commentMailer = require("../mailer/comment_Mailer");
+const comment_mailer = require("../mailer/comment_Mailer");
 
 module.exports.userComment = async function(req, res){
 
@@ -22,7 +22,7 @@ module.exports.userComment = async function(req, res){
             // populating the newly created post
             comment = await Comment.populate(comment, {path: 'user', select: ['first_name', 'last_name', 'email']});
             // sending details to commentMailer
-            commentMailer.commentMailer(comment);
+            comment_mailer.commentMailer(comment);
         
             //console.log(comment);
 

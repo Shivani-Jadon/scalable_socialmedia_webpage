@@ -3,16 +3,18 @@ const nodeMailer = require("../config/nodemailer");
 // another way of exporting
 exports.commentMailer = (comment) =>{
 
-    console.log("Inside nodeMailer");
+    console.log("Inside nodeMailer", comment);
+
+    let html_email = nodeMailer.renderTemplate({comment : comment}, "/comment/comment_publish.ejs");
 
     nodeMailer.transporter.sendMail({
-        from: 'jadon1998@gmail.com',                    // sender address
-        to: "comment.user.email",                       // list of receivers
+        from: 'application2020development@gmail.com',                    // sender address
+        to: comment.user.email,                       // list of receivers
         subject: " New comment published ",                            // Subject line
-        html: "<h1> Your comment has been published </h1>"                    // html body
+        html: html_email                    // html body
     }, (err, info) => {
             if(err){
-                console.log("Error in sending mail ------", err);
+                console.log("Error in rendering mail ------", err);
                 return;
             }
 
