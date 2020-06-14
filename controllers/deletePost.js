@@ -1,5 +1,6 @@
 const Post = require("../models/post_model");
 const Comment = require("../models/comment_model");
+const Like = require("../models/likes_model");
 
 module.exports.destroy_post = async function(req, res){
 
@@ -11,8 +12,14 @@ module.exports.destroy_post = async function(req, res){
         if(post.userInfo == req.user.id)
         {
             post.remove();
-
+            // Change :: delete likes of associated comments
+            await Like.deleteMany({id: {$in:postModel.comments}});
+            
+            // deleting comments of post
             await Comment.deleteMany({post: req.params.id});
+
+            // Change :: delete likes associated with post
+            await Like.deleteMany({id : req.params.id});
             
             if(req.xhr){
                 return res.status(200).json({

@@ -40,6 +40,8 @@ route.use('/check_account', require("./check_account"));
 // route to api
 route.use('/api', require("./api"));
 
+// middleware to route to toggle like
+route.use('/like', require("./like"));
 
 // exporting route
 module.exports = route;

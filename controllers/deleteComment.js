@@ -1,5 +1,6 @@
 const Comment = require("../models/comment_model");
 const Post = require("../models/post_model");
+const Like = require("../models/likes_model");
 
 module.exports.destroy_comment = async function(req, res){
     
@@ -10,6 +11,9 @@ module.exports.destroy_comment = async function(req, res){
             if(comment.user == req.user.id){
                 let post_id = comment.post; 
                 
+                //Change :: deleting likes associated with comments
+                Like.deleteMany({id : req.params.id});
+
                 // removing comment
                 comment.remove();
     
