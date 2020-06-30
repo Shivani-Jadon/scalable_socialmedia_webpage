@@ -1,19 +1,21 @@
 const mongoose = require('mongoose');
 
-const likesSchema = new mongoose.model({
+const likesSchema = new mongoose.Schema({
     user : {
         type : mongoose.Schema.ObjectId,
         required : true
     },
+    // this defines the object Id of liked object
     parent : {
         type : mongoose.Schema.ObjectId,
-        refpath : onModel,
-        required: true
+        required: true,
+        refPath : 'onModel'
     },
+    // this object is used for defining the type of likes in dynamic referencing
     onModel : {
         type: String,
-        enum : ['postModel', 'comment'],
-        required: true
+        required: true,
+        enum : ['postModel', 'comment']        
     }
 },{
     timestamps : true

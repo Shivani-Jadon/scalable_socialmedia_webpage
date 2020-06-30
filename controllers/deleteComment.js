@@ -6,20 +6,20 @@ module.exports.destroy_comment = async function(req, res){
     
     try{
 
-        Comment.findById(req.params.id, function(err, comment){
+        let comment = await Comment.findById(req.params.id); 
         
             if(comment.user == req.user.id){
                 let post_id = comment.post; 
-                
-                //Change :: deleting likes associated with comments
-                Like.deleteMany({id : req.params.id});
 
                 // removing comment
                 comment.remove();
     
                 // removing comment from the database of post
-                Post.findByIdAndUpdate(post_id, {$pull: {comments : req.params.id}});
+                let post = await Post.findByIdAndUpdate(post_id, {$pull: {comments : req.params.id}});
     
+                //Change :: deleting likes associated with comments
+                Like.deleteMany({parent: comment._id, onModel: 'comment'});
+
                 if(req.xhr){
                     return res.status(200).json({
                         data : {
@@ -43,7 +43,7 @@ module.exports.destroy_comment = async function(req, res){
                 req.flash("error", "You are not authorised to remove comments");
                 return res.redirect("back");
             }
-        })
+        
 
     }catch(error){
         console.log("Error in deleting comment ",error);

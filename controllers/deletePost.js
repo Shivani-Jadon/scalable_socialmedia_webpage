@@ -12,12 +12,12 @@ module.exports.destroy_post = async function(req, res){
         // .id will convert id object to string for comparision
         if(post.userInfo == req.user.id)
         {
-            post.remove();
             // Change :: delete likes of associated comments
             await Like.deleteMany({parent : post, onModel : 'postModel'});
             // Change :: delete likes associated with post
             await Like.deleteMany({_id : {$in : post.comments}});
 
+            post.remove();
 
             // deleting comments of post
             await Comment.deleteMany({post: req.params.id});
