@@ -23,7 +23,16 @@ module.exports.post = async function(req, res){
                         .populate({path : 'comments', options: { sort: '-createdAt' },       
                                 populate : {
                                     path : 'user' 
-                                }});
+                                },
+                                populate : {
+                                    path : 'likes'
+                                }}
+                        )        
+                        .populate(
+                            {
+                                path : 'likes'
+                            }
+                        );
 
        
 

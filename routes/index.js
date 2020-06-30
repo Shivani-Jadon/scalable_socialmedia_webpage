@@ -41,6 +41,10 @@ route.use('/check_account', require("./check_account"));
 route.use('/api', require("./api"));
 
 // middleware to route to toggle like
+
+        // error may be encountered while running the server 
+        // start redis server for mailer jobs
+
 route.use('/like', require("./like"));
 
 // exporting route
