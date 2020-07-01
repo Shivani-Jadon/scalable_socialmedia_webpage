@@ -35,5 +35,15 @@
     </div>
 </section>
 
+<!-- script for ajax request for post -->
 <script type="text/javascript" src="/script/postAjax.js"></script>
+<!-- script for ajax request for post -->
 <script type="text/javascript" src="/script/commentAjax.js"></script>
+<!-- script for ajax request for addding/removing likes -->
+<script type="text/javascript" src="/script/toggleLike.js"></script>
+<script>
+    $(`.toggle-like-btn`).each(function(){
+        let self = this;
+        let likeToggle = new like_toggler(self);
+    });
+</script>

@@ -9,7 +9,7 @@
     <% if(locals.user) { %>
         <!-- toggling like like -->
         <div>
-            <a class="toggle-like" data-like="comment.likes.length" href="/like/toggle/?id=<%=comment._id%>&type=Comment">
+            <a class="toggle-like-btn" data-likes="comment.likes.length" href="/like/toggle/?id=<%=comment._id%>&type=Comment">
                 <button type="button" value="Like"></button>
                 <!-- <span><%=// comment.likes.length %>Likes</span> -->
             </a> 
