@@ -3,9 +3,23 @@
     <% if(locals.user && (locals.user.id == comment.user.id)) { %> 
         <a class="comment-del-btn" href="/posts/delete-comment/<%= comment.id %>" >
             <b>x</b>
-        </a>    
+        </a>      
     <% } %>
     <br/>
+    <% if(locals.user) { %>
+        <!-- toggling like like -->
+        <div>
+            <a class="toggle-like" data-like="comment.likes.length" href="/like/toggle/?id=<%=comment._id%>&type=Comment">
+                <button type="button" value="Like"></button>
+                <!-- <span><%=// comment.likes.length %>Likes</span> -->
+            </a> 
+        </div>     
+    <% } else { %> 
+        <!-- toggling like like -->
+        <div>
+                <!-- <span><%=// comment.likes.length %>Likes</span> -->
+        </div>         
+    <% } %>
     <small>
         <%= comment.user.first_name %>
     </small>
