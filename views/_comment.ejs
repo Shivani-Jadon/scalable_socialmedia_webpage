@@ -6,21 +6,25 @@
         </a>      
     <% } %>
     <br/>
-    <% if(locals.user) { %>
-        <!-- toggling like like -->
-        <div>
-            <a class="toggle-like-btn" data-likes="comment.likes.length" href="/like/toggle/?id=<%=comment._id%>&type=Comment">
-                <button type="button" value="Like"></button>
-                <!-- <span><%=// comment.likes.length %>Likes</span> -->
-            </a> 
-        </div>     
-    <% } else { %> 
-        <!-- toggling like like -->
-        <div>
-                <!-- <span><%=// comment.likes.length %>Likes</span> -->
-        </div>         
-    <% } %>
+    
     <small>
         <%= comment.user.first_name %>
     </small>
+
+    <!-- :: change -->
+    <% if(locals.user) { %>
+        <!-- toggling like like -->
+        <small>
+            <a class="toggle-like-btn" data-likes="<%= comment.likes.length %>" href="/like/toggle/?id=<%=comment._id%>&type=comment">
+                <!-- <button type="button" value="Like"></button> -->
+                <span><%= comment.likes.length %> Likes</span>
+            </a> 
+        </small>     
+    <% } else { %> 
+        <!-- toggling like like -->
+        <div>
+                <span><%= comment.likes.length %> Likes</span>
+        </div>         
+    <% } %>
+    
 </li>

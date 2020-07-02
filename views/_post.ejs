@@ -12,24 +12,30 @@
             <%= post.userInfo.first_name %>
             <%=  post.userInfo.last_name %>
         </small>
+        <!-- :: change -->
+        <% if(locals.user) { %>
+        <small>
+            <a class="toggle-like-btn" data-likes="<%= post.likes.length %>" href="/like/toggle/?id=<%=post._id%>&type=postModel">
+                <!-- <button type="button" value="Like"></button> -->
+                <span><%= post.likes.length %> Likes</span>
+            </a>
+        </small> 
+        <% }else { %> 
+            <div><%= post.likes.length %> Likes</div>
+        <% } %>
     </p>
+
+
     <% if(locals.user) { %>
+    
     <div class="post-comments">
         <form id="comment-form-<%= post.id %>" action="/posts/comment" method="POST">
             <input type="text" name="content" placeholder="Comment here...." required>
             <input type="hidden" name="post" value="<%= post._id %>">
             <input type="submit" value="Add Comment">
         </form>
-
-        <a class="toggle-like-btn" data-likes="post.likes.length" href="/like/toggle/?id=<%=post._id%>&type=Post">
-            <button type="button" value="Like"></button>
-            <!-- <span><%=// post.likes.length %>Likes</span> -->
-        </a>
     </div>
-    <% }else { %> 
-        <div>post.likes.length Likes</div>
     <% } %>
-    
 
     <div class="comment-container">
         <ul class="comment-list">

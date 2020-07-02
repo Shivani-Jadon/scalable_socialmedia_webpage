@@ -11,7 +11,7 @@ module.exports.toggleLike = async function(req, res){
         let likeable;
         let deleted = false;
 
-        if(req.query.type == "Post"){
+        if(req.query.type == "postModel"){
             likeable = await Post.findById(req.query.id).populate('likes');
         }else{
             likeable = await Comment.findById(req.query.id).populate('likes');
@@ -19,18 +19,20 @@ module.exports.toggleLike = async function(req, res){
 
         // check whether the like exist or not
         let existingLike = await Like.findOne({
-            user : req.user._id,
             parent : req.query.id,
-            onModel : req.query.type
+            onModel : req.query.type,
+            user : req.user._id
+            
         });
 
         // deleting the like if it already exists
         if(existingLike){
             // deleting like from post/comment model
-            parent.likes.pull(existingLike._id);
-            parent.save();
+            likeable.likes.pull(existingLike._id);
+            likeable.save();
             // delete the like from Like model;
             existingLike.remove();
+            deleted = true;
         }
         // creating a like if it doesn't exist
         else{
@@ -41,10 +43,9 @@ module.exports.toggleLike = async function(req, res){
             })
 
             // creating like from the post/comment model too
-            parent.likes.push(newLike._id);
-            parent.save();
-            
-            deleted = true;
+            likeable.likes.push(newLike._id);
+            likeable.save();
+         
         }
 
         // returning response to ajax request

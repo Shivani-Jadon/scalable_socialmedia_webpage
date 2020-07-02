@@ -35,7 +35,7 @@ module.exports.post = async function(req, res){
                         );
 
        
-
+        // console.log(posts);
         return res.render("posting_page", {title: "User's posts", posts : posts});
         
     }catch(err){   

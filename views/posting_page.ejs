@@ -40,10 +40,10 @@
 <!-- script for ajax request for post -->
 <script type="text/javascript" src="/script/commentAjax.js"></script>
 <!-- script for ajax request for addding/removing likes -->
-<script type="text/javascript" src="/script/toggleLike.js"></script>
+<script src="/script/toggleLikeAjax.js"></script>
 <script>
-    $(`.toggle-like-btn`).each(function(){
+    $('.toggle-like-btn').each(function(){
         let self = this;
-        let likeToggle = new like_toggler(self);
+        let like_toggler = new ToggleLike(self);
     });
 </script>

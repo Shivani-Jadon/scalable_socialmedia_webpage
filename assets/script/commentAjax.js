@@ -31,6 +31,10 @@
                     $(`#user-post-id-${post_id} .comment-container>ul`).prepend(newComment); 
                     // function callback for deleting comment
                     deleteComment($(` .comment-del-btn`, newComment));
+
+                    // ::change function callback for toggling like on comments
+                    new ToggleLike($(` .toggle-like-btn`, newComment));
+
                     let flashMsg = "new comment created by your profile";
                     showNotification(flashMsg);    
                 },
@@ -53,6 +57,7 @@
                 url : $(deleteLink).prop('href'),
                 success : function(data){
                     $(`#user-comment-${data.data.comment_id}`).remove();
+
                     let flashMsg = "comment has been removed";
                     showNotification(flashMsg);
                 },
@@ -75,6 +80,16 @@
             <small>
                 ${ comment.user.first_name }
             </small>
+            
+                <!-- :: change toggling like -->
+                <small>
+                    <a class="toggle-like-btn" data-likes="0" href="/like/toggle/?id=${comment._id}&type=Comment">
+                        <button type="button" style="padding: 2px; font-size: 10px;" value="Like">0 Likes</button>
+                    </a> 
+                </small>     
+           
+
+            
         </li>`
         );
     }

@@ -30,6 +30,10 @@
                     $('#post-list-container>ul').prepend(newPost); 
                     // function callback for deleting post
                     deletePostDOM($(` .post-del-btn`, newPost));  
+
+                    // :: change funaction callback for toggling like on posts
+                    new ToggleLike($(` .toggle-like-btn`, newPost));
+
                     let flashMsg = "new post created by your profile";
                     showNotification(flashMsg);    
                 },
@@ -69,8 +73,14 @@
                 <input type="submit" value="Add Comment">
             </form>
         </div>
+        <!-- :: change -->
+        <small>
+            <a class="toggle-like-btn" data-likes="0" href="/like/toggle/?id=${post._id}&type=Post">
+                <button type="button" style="padding: 2px; font-size: 10px;" value="Like">0 Likes</button>
+            </a>
+        </small>        
         
-    
+        
         <div class="comment-container">
             <ul class="comment-list">
                 
