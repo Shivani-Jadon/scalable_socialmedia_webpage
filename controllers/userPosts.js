@@ -1,7 +1,7 @@
 const Post = require("../models/post_model");
-const postmailer = require("../mailer/post_Mailer");
-const queue = require("../config/kue");
-const post_email_worker = require("../workers/post_email_workers");
+// const postmailer = require("../mailer/post_Mailer");
+// const queue = require("../config/kue");
+// const post_email_worker = require("../workers/post_email_workers");
 
 //display posting_page view when post is exported
 module.exports.post = async function(req, res){

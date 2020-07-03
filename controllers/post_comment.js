@@ -1,8 +1,8 @@
 const Comment = require("../models/comment_model");
 const Post = require("../models/post_model");
-const comment_mailer = require("../mailer/comment_Mailer");
-const queue = require("../config/kue");
-const commentEmailWorker = require("../workers/comment_email_workers");
+// const comment_mailer = require("../mailer/comment_Mailer");
+// const queue = require("../config/kue");
+// const commentEmailWorker = require("../workers/comment_email_workers");
 
 module.exports.userComment = async function(req, res){
 

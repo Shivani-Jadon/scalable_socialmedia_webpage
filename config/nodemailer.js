@@ -1,3 +1,6 @@
+// Note: Mailer should be used with google sign-in or the emil addresses should be correct
+// In case the mails are not delivered empty the queue to not stop the processing
+
 // const nodemailer = require("nodemailer");
 // const ejs = require('ejs');
 // const path = require("path");

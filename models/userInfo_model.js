@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const multer = require("multer");
 const path = require("path");
+const Friendship = require("./friendship_model");
 const Avatar_Path = path.join('/upload/users/avatar');
 
 // database schema to store value of 
@@ -30,7 +31,13 @@ const userSchema = new mongoose.Schema({
     },
     avatar : {
         type : String
-    }
+    },
+    friends : [
+        {
+            type : mongoose.Schema.Types.ObjectId,
+            rel : Friendship
+        }
+    ]
 },{
     timestamps : true
 });
