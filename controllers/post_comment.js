@@ -24,6 +24,8 @@ module.exports.userComment = async function(req, res){
             // populating the newly created post
             comment = await Comment.populate(comment, {path: 'user', select: ['first_name', 'last_name', 'email']});
             
+
+            // :::disabling mailer activities 
             // sending details to commentMailer
             //comment_mailer.newComment(comment);
 
@@ -31,14 +33,14 @@ module.exports.userComment = async function(req, res){
             // a new queue is created if it is not present or a new job is inserted in the queue
             // create method takes queue name and data 
             // after saving the queue a callback function is executed
-            let job = queue.create('emails', comment).save(function(err){
-                if(err){
-                    console.log("Error in creating new job", err);
-                    return;
-                }
+            // let job = queue.create('emails', comment).save(function(err){
+            //     if(err){
+            //         console.log("Error in creating new job", err);
+            //         return;
+            //     }
 
-                console.log("New job queued ---> ", job.id);
-            })
+            //     console.log("New job queued ---> ", job.id);
+            // })
         
             //console.log(comment);
 

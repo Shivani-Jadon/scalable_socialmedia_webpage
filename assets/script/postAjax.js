@@ -63,8 +63,16 @@
                 ${ post.userInfo.first_name }
                 ${  post.userInfo.last_name }
             </small> 
+            <!-- :: change -->
+            <small>
+                <a class="toggle-like-btn" data-likes="0" href="/like/toggle/?id=${post._id}&type=postModel">
+                    <!--<button type="button" value="Like"></button>-->
+                    <span>0 Likes</span> 
+                </a>
+            </small>        
 
         </p>
+        
         
         <div class="post-comments">
             <form action="/posts/comment" method="POST">
@@ -73,12 +81,7 @@
                 <input type="submit" value="Add Comment">
             </form>
         </div>
-        <!-- :: change -->
-        <small>
-            <a class="toggle-like-btn" data-likes="0" href="/like/toggle/?id=${post._id}&type=Post">
-                <button type="button" style="padding: 2px; font-size: 10px;" value="Like">0 Likes</button>
-            </a>
-        </small>        
+       
         
         
         <div class="comment-container">

@@ -83,8 +83,9 @@
             
                 <!-- :: change toggling like -->
                 <small>
-                    <a class="toggle-like-btn" data-likes="0" href="/like/toggle/?id=${comment._id}&type=Comment">
-                        <button type="button" style="padding: 2px; font-size: 10px;" value="Like">0 Likes</button>
+                    <a class="toggle-like-btn" data-likes="0" href="/like/toggle/?id=${comment._id}&type=comment">
+                        <!--button type="button" value="Like"></button>-->
+                        <span>0 Likes</span> 
                     </a> 
                 </small>     
            

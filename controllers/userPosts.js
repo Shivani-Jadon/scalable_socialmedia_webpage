@@ -58,17 +58,18 @@ module.exports.create_post = async function(req, res){
         // populating the newly created post
         post = await Post.populate(post, {path: 'userInfo', select: ['first_name', 'last_name', 'email']});
 
+        // ::: disabling this feature for development purpose
         // adding newly created post to mailer
         //postmailer.newPost(post);
         // Creating a new job and queuing it whenever a POST is published and sent an email
-        let job = queue.create('emails', post).save(function(err){
-            if(err){
-                console.log("Error in creating new job", err);
-                return;
-            }
+        // let job = queue.create('emails', post).save(function(err){
+        //     if(err){
+        //         console.log("Error in creating new job", err);
+        //         return;
+        //     }
 
-            console.log("New job queued ---> ", job.id);
-        })
+        //     console.log("New job queued ---> ", job.id);
+        // })
 
         //console.log(post);
                                                             

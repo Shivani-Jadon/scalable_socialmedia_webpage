@@ -16,7 +16,7 @@
                 let self = this;
 
                 $.ajax({
-                    type : 'POST',
+                    type : 'post',
                     url : $(self).attr('href'),
                 })
                 .done(function(data){
