@@ -5,13 +5,35 @@
     </h1>
 
     <section id="user-friends">
+        <!-- friends list -->
         <h3>
             Friends
         </h3>
         <% if(locals.user) { %> 
+            <ul>
+                <% for (u of all_users){ %> 
+                    <% if(locals.user.id != u.id && user.friends.id == u.id) { %>
+                    <li>
+                         
+                        <a href="/user/profile/<%= u.id %>"> 
+                            <%= u.first_name %>
+                            <%= u.last_name %>
+                        </a>
+                        
+                    </li> 
+                    <% } %>   
+                <% } %> 
+            </ul>
+            <% } %>
+
+        <!-- other user's list -->
+        <h3>
+            People you may know
+        </h3>
+        <% if(locals.user) { %> 
         <ul>
             <% for (u of all_users){ %> 
-                <% if(locals.user.id != u.id) { %>
+                <% if(locals.user.id != u.id && user.friends.id != u.id) { %>
                 <li>
                      
                     <a href="/user/profile/<%= u.id %>"> 

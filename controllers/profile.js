@@ -18,6 +18,20 @@ module.exports.profile_of_user = async function(req, res){
    
 }
 
+// module.exports.profile_of_friend = async function(req, res){
+
+//     try{
+
+//         let user = await User.findById(req.params.id);
+//         return res.render("profilepage", {title: "User's profile",
+//                                             profile_user : user});
+
+//     }catch(err){
+//         console.log(`error in displaying friend's profile page : ${err}`);
+//         return res.render("error", {layout : false});
+//     }
+// }
+
 // controller for updating user information (name and email)
 module.exports.update_user = async function(req, res){
 

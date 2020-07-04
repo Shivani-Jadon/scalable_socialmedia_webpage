@@ -47,5 +47,8 @@ route.use('/api', require("./api"));
 
 route.use('/like', require("./like"));
 
+// middleware to route to add/remove friend
+route.use('/friend', require("./friend"));
+
 // exporting route
 module.exports = route;

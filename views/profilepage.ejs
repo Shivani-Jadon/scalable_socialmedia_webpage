@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="/css/profilepage.css">
 
     <h1>
-        Welcome <%= profile_user.first_name %>
+        Hi! I am <%= profile_user.first_name %>
     </h1>
     
     <h3>
@@ -30,6 +30,18 @@
         </form>
     </section>
 
-    <% } %>
+    <% } else{ %> 
+        <% for(friend in user.friends) { %> 
+            <% if(friend == profile_user._id) { %> 
+                <button type="button">
+                    <a href='/friend/add' data-friend='' > friend </a>
+                </button>
+            <% } else { %>
+                <button type="button">
+                    <a href='/friend/remove' data-friend='' > Unfriend </a>
+                </button>
+            <% }%>
+        <% } %>
+    <% }%>
 
 <script type="text/javascript" src="/script/preview.js"></script>
