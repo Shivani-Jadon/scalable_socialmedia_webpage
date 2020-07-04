@@ -32,10 +32,8 @@ module.exports.destroy_comment = async function(req, res){
                 // incase the ajax request isn't responded
                 // flash success msg
                 req.flash("success", "Comment removed");
-                Post.findByIdAndUpdate(post_id, {$pull: {comments : req.params.id}}, function(err, post){
-    
-                     return res.redirect("back");                
-                 });
+               
+                return res.redirect("back");                                
                 
             }
             else{
