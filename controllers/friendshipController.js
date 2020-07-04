@@ -24,20 +24,42 @@ module.exports.addFriend = async function(req, res){
 }
 
 // Controller for removing friend from friendlist
-module.exports.removeFriend = function(req, res){
+module.exports.removeFriend = async function(req, res){
 
     try{
-        let friend_data = await Friend.findOne({
-            sender : req.query.sender,
-            receiver : req.query.receiver
+        // checking if primary user is sender and profile data user is receiver
+        let friend_data1 = await Friend.findOne({
+            sender : req.query.user_send,
+            receiver : req.query.user_receive
         });
     
-        let sender_info = await User.findByIdAndUpdate( req.query.sender, {$pop : {friends : friend_data._id}});
-        sender_info.save();
-        let receiver_info = await User.findById(req.query.receiver, {$pop : {friends : friend_data._id}});
-        receiver_info.save();
-    
-        friend_data.remove();
+        // checking if profile data user is sender and primary user is receiver
+        let friend_data2 = await Friend.findOne({
+            sender : req.query.user_send,
+            receiver : req.query.user_receive
+        });
+
+        // deleting data if Case 1 is true
+        if(friend_data1)
+        {
+            let sender_info = await User.findByIdAndUpdate( req.query.user_send, {$pop : {friends : friend_data1._id}});
+            sender_info.save();
+            let receiver_info = await User.findById(req.query.user_receive, {$pop : {friends : friend_data1._id}});
+            receiver_info.save();
+        
+            friend_data1.remove();
+        }
+        // deleting data if case 2 is true
+        else if(friend_data2)
+        {
+            let sender_info = await User.findByIdAndUpdate( req.query.user_receive, {$pop : {friends : friend_data2._id}});
+            sender_info.save();
+            let receiver_info = await User.findById(req.query.user_send, {$pop : {friends : friend_data2._id}});
+            receiver_info.save();
+        
+            friend_data2.remove();
+        }
+        
     
         req.flash("success", "You are no longer friends");
                    

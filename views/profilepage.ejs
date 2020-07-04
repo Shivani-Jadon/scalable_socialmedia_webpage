@@ -31,17 +31,26 @@
     </section>
 
     <% } else{ %> 
-        <% for(friend in user.friends) { %> 
-            <% if(friend == profile_user._id) { %> 
+        <% let friend_found = false; %>
+        <% for(let friend in profile_user.friends) { %> 
+            <% if ((friend.sender == profile_user._id  &&  friend.receiver == user._id) || (friend.receiver == profile_user._id  &&  friend.sender == user._id) { %> 
+                <% friend_found = true %>
+            <% } %>   
+        <% } %>
+
+        <!-- if profile viewed is not a friend then ask for adding friend -->
+        <section id="friend-request">
+            <% if(friend_found == false) { %>
                 <button type="button">
-                    <a href='/friend/add' data-friend='' > friend </a>
+                    <a href='/friend/add/?sender=<%=user.id %> && receiver=<%=profile_user._id%>'> friend </a>
                 </button>
             <% } else { %>
                 <button type="button">
-                    <a href='/friend/remove' data-friend='' > Unfriend </a>
+                    <a href='/friend/remove/?<%= user_send=user.id %> && user_receive=<%=profile_user._id%>'> Unfriend </a>
                 </button>
-            <% }%>
-        <% } %>
-    <% }%>
+            <% } %>
+        </section>
+
+    <% } %>
 
 <script type="text/javascript" src="/script/preview.js"></script>
