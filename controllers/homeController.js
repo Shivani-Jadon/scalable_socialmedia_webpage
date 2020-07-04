@@ -11,9 +11,14 @@ module.exports.home = async function(req, res){
    try{
 
       let users = await User.find({});
+      // let logged_user = await User.findById(locals.user.id).populate({path : 'friends'});
+
+      // console.log(logged_user);
+
       return res.render("homepage", 
                         {title: "Home page",
                          all_users: users});
+
    }catch(err){
       console.log(`Error : ${err}`);
       return res.render("error", {layout : false});

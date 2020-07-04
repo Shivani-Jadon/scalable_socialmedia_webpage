@@ -78,7 +78,7 @@
             </a>    
             <br/>
             <small>
-                ${ comment.user.first_name }
+                ${ comment.user.first_name }  ${ comment.user.last_name }
             </small>
             
                 <!-- :: change toggling like -->

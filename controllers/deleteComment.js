@@ -33,7 +33,8 @@ module.exports.destroy_comment = async function(req, res){
                 // flash success msg
                 req.flash("success", "Comment removed");
                
-                return res.redirect("back");                                
+                return res.redirect("back");                
+                
                 
             }
             else{

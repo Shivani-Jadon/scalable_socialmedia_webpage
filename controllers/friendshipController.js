@@ -3,23 +3,36 @@ const Friend = require("../models/friendship_model");
 
 // Controller for adding friend of the user
 module.exports.addFriend = async function(req, res){
+    try{
 
-    let friend = await Friend.create({
-        sender : req.query.sender,
-        receiver : req.query.receiver
-    })
+        console.log(req.query.sender);
+        console.log(req.query.receiver);
+        
+        let friend = await Friend.create({
+            sender : req.query.sender,
+            receiver : req.query.receiver
+        })
+    
 
-    let sender_info = await User.findById( req.query.sender);
-    let receiver_info = await User.findById(req.query.receiver);
+        let sender_info = await User.findById(req.query.sender);
+        let receiver_info = await User.findById(req.query.receiver);
+    
+        sender_info.friends.push(friend);
+        sender_info.save();
+    
+        receiver_info.friends.push(friend);
+        receiver_info.save();
+    
+        req.flash('success',"you are friends now");
+        return res.redirect('back');
 
-    sender_info.friends.push(friend);
-    sender_info.save();
+    }catch(error){
 
-    receiver_info.friends.push(friend);
-    receiver_info.save();
-
-    req.flash('success',"you are friends now");
-    return res.redirect('back');
+        console.log(error);
+        // flash error msg      
+        req.flash("error", "Error in fulfilling friend request");
+        return res.redirect("back");
+    }
 
 }
 
@@ -66,6 +79,7 @@ module.exports.removeFriend = async function(req, res){
         return res.redirect("back"); 
     
     }catch(error){
+        console.log(error);
         // flash error msg
         req.flash("error", "Error in fulfilling Unfriend request");
         return res.redirect("back");

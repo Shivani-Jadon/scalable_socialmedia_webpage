@@ -30,27 +30,28 @@
         </form>
     </section>
 
+    <script type="text/javascript" src="/script/preview.js"></script>
     <% } else{ %> 
-        <% let friend_found = false; %>
-        <% for(let friend in profile_user.friends) { %> 
-            <% if ((friend.sender == profile_user._id  &&  friend.receiver == user._id) || (friend.receiver == profile_user._id  &&  friend.sender == user._id) { %> 
-                <% friend_found = true %>
+        <% let friend_found = 0 %>
+        <% for(let friend of profile_user.friends) { %> 
+            <% if ((friend.sender == profile_user._id  &&  friend.receiver == user._id) || (friend.receiver == profile_user._id  &&  friend.sender == user._id)) { %> 
+                <% friend_found = 1 %>
             <% } %>   
         <% } %>
 
         <!-- if profile viewed is not a friend then ask for adding friend -->
         <section id="friend-request">
-            <% if(friend_found == false) { %>
+            <% if(friend_found == 1) { %>
                 <button type="button">
-                    <a href='/friend/add/?sender=<%=user.id %> && receiver=<%=profile_user._id%>'> friend </a>
+                    <a href='/friend/remove/?user_send=<%=user.id %>&user_receive=<%=profile_user._id%>'> Unfriend </a>
                 </button>
+                
             <% } else { %>
                 <button type="button">
-                    <a href='/friend/remove/?<%= user_send=user.id %> && user_receive=<%=profile_user._id%>'> Unfriend </a>
+                    <a href='/friend/add/?sender=<%=user._id %>&receiver=<%=profile_user._id%>'> Friend </a>
                 </button>
             <% } %>
         </section>
 
     <% } %>
 
-<script type="text/javascript" src="/script/preview.js"></script>

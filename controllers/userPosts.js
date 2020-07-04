@@ -19,10 +19,11 @@ module.exports.post = async function(req, res){
 
         let posts = await Post.find({})
                         .sort('-createdAt')
-                        .populate('userInfo')
+                        .populate({path : 'userInfo' ,select: ['first_name', 'last_name', 'email']})
                         .populate({path : 'comments', options: { sort: '-createdAt' },       
                                 populate : {
-                                    path : 'user' 
+                                    path : 'user',
+                                    select: ['first_name', 'last_name', 'email']
                                 },
                                 populate : {
                                     path : 'likes'
@@ -34,6 +35,7 @@ module.exports.post = async function(req, res){
                             }
                         );
 
+        console.log(posts);
        
         // console.log(posts);
         return res.render("posting_page", {title: "User's posts", posts : posts});
