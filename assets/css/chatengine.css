@@ -1,0 +1,41 @@
+#engine-container {
+  padding: 5px;
+  bottom: 15%;
+  right: 2%;
+  min-width: 200px;
+  min-height: 200px;
+  border: 10px #607D8B dashed;
+  background-image: linear-gradient(rosybrown, indianred);
+  position: fixed;
+  border-radius: 20px;
+}
+
+#engine-container #display {
+  min-height: 150px;
+}
+
+#engine-container #display div {
+  padding: 5px;
+  font-family: fantasy;
+  font-style: italic;
+  margin-top: 5px;
+  border-radius: 10px;
+}
+
+#engine-container #display #text1 {
+  margin-right: 50px;
+  background-color: #7974c0;
+  border: 5px #201c5a solid;
+  color: #201c5a;
+}
+
+#engine-container #display #text2 {
+  margin-left: 50px;
+  background-color: #dfd687;
+  border: 5px #795548 solid;
+  color: #795548;
+}
+
+#engine-container form input {
+  min-height: 30px;
+}

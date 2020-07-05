@@ -1,5 +1,8 @@
 /* styling footer of the page */
 body footer{
+    position: fixed;
+    bottom: 0%;
+    min-width: 100vw;
     background-color: darkolivegreen;
     color: white;
     padding: 1rem;

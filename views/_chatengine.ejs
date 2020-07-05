@@ -1,0 +1,26 @@
+<!-- linking stylesheet -->
+<link rel="stylesheet" type="text/css" href="/css/chatengine.css">
+
+<!-- showing chat engine only if the user is signed in -->
+<% if(locals.user) { %> 
+<div id="engine-container">
+
+    <section id="display">
+        <div id="text1">
+            Your Text
+        </div>
+        <div id="text2">
+            Your Friend's Text
+        </div>
+    </section>
+    
+
+    <!-- form for submitting text entered -->
+    <form action=" " name="chat-form" id="chat-form" method="POST">
+        <input type="text" name="chat-field" placeholder="Enter your text here" required>
+        <input type="submit" value="send" for="chat-form">
+    </form>
+
+</div>
+
+<% } %>
