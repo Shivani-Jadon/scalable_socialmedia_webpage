@@ -14,7 +14,7 @@
   min-height: 150px;
 }
 
-#engine-container #display div {
+#engine-container #display li {
   padding: 5px;
   font-family: fantasy;
   font-style: italic;
@@ -22,14 +22,14 @@
   border-radius: 10px;
 }
 
-#engine-container #display #text1 {
+#engine-container #display .user-text {
   margin-right: 50px;
   background-color: #7974c0;
   border: 5px #201c5a solid;
   color: #201c5a;
 }
 
-#engine-container #display #text2 {
+#engine-container #display .reply-text {
   margin-left: 50px;
   background-color: #dfd687;
   border: 5px #795548 solid;

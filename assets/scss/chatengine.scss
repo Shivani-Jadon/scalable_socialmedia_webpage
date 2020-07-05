@@ -11,7 +11,7 @@
 
     #display{
         min-height: 150px;
-        div{
+        li{
             padding: 5px;
             font-family: fantasy;
             font-style: italic;
@@ -19,14 +19,14 @@
             border-radius: 10px;
         }
 
-        #text1{
+        .user-text{
             margin-right: 50px;
             background-color: #7974c0;
             border : 5px #201c5a solid;
             color: #201c5a;
         }
     
-        #text2{
+        .reply-text{
             margin-left: 50px;
             background-color: #dfd687;
             border : 5px #795548 solid;

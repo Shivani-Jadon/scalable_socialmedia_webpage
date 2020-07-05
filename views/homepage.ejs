@@ -39,6 +39,13 @@
         <% } %>
     </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js.map"></script>
+    <!-- real time framework from server -->
+    <!-- js library for socket.io for front-end -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
     <script src="/script/socket_chat_engine.js"></script>
+    <% if(locals.user){ %>
+        <script>
+            new ChatEngine('engine-container', '<%= locals.user._id %>');
+        </script>
+    <% } %>
     
