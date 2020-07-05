@@ -38,6 +38,17 @@
         input{
             min-height: 30px;
         }
+        #btn{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: small;
+            background-color: crimson;
+            color: lightgreen;
+            text-transform: uppercase;
+            border : 3px lightgreen solid;
+        }
+        #btn:hover{
+            background-color: darkolivegreen;
+        }
     }
     
 }

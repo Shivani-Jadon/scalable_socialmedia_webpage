@@ -39,3 +39,16 @@
 #engine-container form input {
   min-height: 30px;
 }
+
+#engine-container form #btn {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: small;
+  background-color: crimson;
+  color: lightgreen;
+  text-transform: uppercase;
+  border: 3px lightgreen solid;
+}
+
+#engine-container form #btn:hover {
+  background-color: darkolivegreen;
+}

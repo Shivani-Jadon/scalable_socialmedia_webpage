@@ -6,11 +6,13 @@ const express_layout = require('express-ejs-layouts');
 const db = require("./config/mongoose");
 // library for session cookies 
 const session = require('express-session');
+
 // importing passport for authentication
 const passport = require('passport');
 const LocalStrategy = require("./config/passport_local_strategy");      // setting up local strategy
 const JwtStrategy = require("./config/jwt_strategy");                   // seetting up jet strategy
 const GoogleStrategy = require("./config/google_strategy_passport");
+
 // for storing session cookie in database
 const MongoStore = require('connect-mongo')(session);
 // library for sass middleware
@@ -18,6 +20,13 @@ const sassMiddleware = require('node-sass-middleware');
 // import connect-flash library used to store flash messages in session cookies
 const flash = require('connect-flash');
 const flashCustom_Mware = require('./controllers/flashMiddleware');
+
+// setting up chat server to be used with socket.io for chat-engine
+const chatServer = require('http').Server(app);
+const chatSocket = require("./config/chatEngine_socket").chatSocketIO(chatServer);
+chatServer.listen(4000);
+console.log("Chat Server is running on port 4000");
+
 
 // using sass middleware
 app.use(sassMiddleware({
