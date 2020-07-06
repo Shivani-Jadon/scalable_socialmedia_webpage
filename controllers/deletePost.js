@@ -15,7 +15,7 @@ module.exports.destroy_post = async function(req, res){
             // Change :: delete likes of associated comments
             await Like.deleteMany({parent : post, onModel : 'postModel'});
             // Change :: delete likes associated with post
-            await Like.deleteMany({_id : {$in : post.comments}});
+            await Like.deleteMany({parent : {$in : post.comments}});
 
             post.remove();
 

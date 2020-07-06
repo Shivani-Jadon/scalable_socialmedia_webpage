@@ -54,7 +54,7 @@
                 type : 'get',
                 url : $(deleteLink).prop('href'),
                 success : function(data){
-                    $(`#user-comment-${data.data.comment_id}`).remove();
+                    $(`#user-comment-${data.data.comment._id}`).remove();
 
                     let flashMsg = "comment has been removed";
                     showNotification(flashMsg);
