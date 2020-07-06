@@ -25,5 +25,13 @@ module.exports.chatSocketIO = function(serverSocket){
             // EMIT acknowledgement from server to user that user has joined the chatroom
             io.in(data.chatroom).emit('user_joined', data);
         });
+
+
+        // Detect sent message and broadcast it to everyone in the room
+        socket.on('send_message', function(data){
+            console.log("Send message request ", data);
+            io.in(data.chatroom).emit('receive_message', data);
+        });
+
     });
 }

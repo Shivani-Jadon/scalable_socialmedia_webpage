@@ -7,6 +7,7 @@ class ChatEngine{
         this.chatBox = $(`#${chatBoxId}`);
         this.userEmail = userEmail;
 
+        console.log(this.chatBox);
         this.socket = io.connect("http://localhost:4000");
 
         // check user before extablishing connection
@@ -33,6 +34,47 @@ class ChatEngine{
         // ON receiving acknowledgement the client is notified
         self.socket.on('user_joined', function(data){
             console.log("A new User joined the chat room ",data);
+        });
+
+        // send the message on clicking send button
+        $('#chat-btn').click(function(){
+            let msg = $('#chat-field').val();
+
+            if(msg != ''){
+                self.socket.emit('send_message', {
+                    message : msg,
+                    user_email : self.userEmail,
+                    chatroom : 'Scafel' 
+                });
+            }
+        });
+
+        // ON receving message 
+        self.socket.on('receive_message', function(data){
+            console.log("Message received ", data.message);
+
+            let new_msg = $('<li>');
+
+            let messageType = 'reply-text';
+
+            if(data.user_email == self.userEmail){
+                messageType = 'user-text';
+            }
+
+            // appending message in the list
+            new_msg.append($('<span>',{
+                'html' : data.message
+            }));
+
+            // apppending email of message sender in the list
+            new_msg.append($('<sub>',{
+                'html' : data.user_email            
+            }));
+
+            new_msg.addClass(messageType);
+
+            $('#message-list').append(new_msg);
+
         })
     }
 }

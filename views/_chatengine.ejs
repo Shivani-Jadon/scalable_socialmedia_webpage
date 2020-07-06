@@ -5,24 +5,27 @@
 <% if(locals.user) { %> 
 <div id="engine-container">
 
-    <div id="display">
-        <ul>
+    
+        <ul id="message-list">
             <li class="user-text">
-                Your Text
+                <span>
+                    Your Text
+                </span>               
             </li>
 
             <li class="reply-text">
-                Your Friend's Text
+                <span>
+                    Your Friend's Text
+                </span>                
             </li>
         </ul>
-    </div>
     
 
     <!-- form for submitting text entered -->
-    <form action=" " name="chat-form" id="chat-form" method="POST">
-        <input type="text" name="chat-field" placeholder="Enter your text here" required>
-        <input type="submit" id="btn" value="send" for="chat-form">
-    </form>
+    <div name="chat-form" id="chat-form">
+        <input id="chat-field" placeholder="Enter your text here" required>
+        <button id="chat-btn">Send</button>
+    </div>
 
 </div>
 

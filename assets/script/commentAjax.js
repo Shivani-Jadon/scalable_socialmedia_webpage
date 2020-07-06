@@ -32,9 +32,7 @@
                     // function callback for deleting comment
                     deleteComment($(` .comment-del-btn`, newComment));
 
-                    // ::change function callback for toggling like on comments
-                    new ToggleLike($(` .toggle-like-btn`, newComment));
-
+ 
                     let flashMsg = "new comment created by your profile";
                     showNotification(flashMsg);    
                 },

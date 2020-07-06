@@ -3,42 +3,47 @@
     bottom: 15%;
     right: 2%;
     min-width: 200px;
+    max-width: 300px;
     min-height: 200px;
     border: 10px #607D8B dashed;
     background-image: linear-gradient(rosybrown, indianred);
     position: fixed;
     border-radius: 20px;
 
-    #display{
+    #message-list{
         min-height: 150px;
-        li{
-            padding: 5px;
-            font-family: fantasy;
-            font-style: italic;
-            margin-top: 5px;
-            border-radius: 10px;
-        }
-
-        .user-text{
-            margin-right: 50px;
-            background-color: #7974c0;
-            border : 5px #201c5a solid;
-            color: #201c5a;
-        }
+        max-height: 200px;
+        overflow-y: scroll;
+        
+            li{
+                padding: 5px;
+                font-family: fantasy;
+                font-style: italic;
+                margin-top: 5px;
+                border-radius: 10px;
+            }
     
-        .reply-text{
-            margin-left: 50px;
-            background-color: #dfd687;
-            border : 5px #795548 solid;
-            color: #795548;
-        }
+            .user-text{
+                margin-right: 50px;
+                background-color: #7974c0;
+                border : 5px #201c5a solid;
+                color: #201c5a;
+            }
+        
+            .reply-text{
+                margin-left: 50px;
+                background-color: #dfd687;
+                border : 5px #795548 solid;
+                color: #795548;
+            }        
+        
     }
 
-    form{
+    #chat-form{
         input{
             min-height: 30px;
         }
-        #btn{
+        #chat-btn{
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             font-size: small;
             background-color: crimson;
@@ -46,7 +51,7 @@
             text-transform: uppercase;
             border : 3px lightgreen solid;
         }
-        #btn:hover{
+        #chat-btn:hover{
             background-color: darkolivegreen;
         }
     }

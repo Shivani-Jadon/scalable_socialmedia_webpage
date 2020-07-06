@@ -27,7 +27,7 @@ module.exports.userComment = async function(req, res){
 
             // :::disabling mailer activities 
             // sending details to commentMailer
-            //comment_mailer.newComment(comment);
+            // comment_mailer.newComment(comment);
 
             // Creating a new job and queuing it whenever a COMMENT is published and sent an email
             // a new queue is created if it is not present or a new job is inserted in the queue
@@ -42,7 +42,7 @@ module.exports.userComment = async function(req, res){
             //     console.log("New job queued ---> ", job.id);
             // })
         
-            //console.log(comment);
+            // console.log(comment);
 
             if(req.xhr){
                 return res.status('200').json(

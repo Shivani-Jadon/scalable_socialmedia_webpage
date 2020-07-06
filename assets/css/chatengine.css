@@ -3,6 +3,7 @@
   bottom: 15%;
   right: 2%;
   min-width: 200px;
+  max-width: 300px;
   min-height: 200px;
   border: 10px #607D8B dashed;
   background-image: linear-gradient(rosybrown, indianred);
@@ -10,11 +11,13 @@
   border-radius: 20px;
 }
 
-#engine-container #display {
+#engine-container #message-list {
   min-height: 150px;
+  max-height: 200px;
+  overflow-y: scroll;
 }
 
-#engine-container #display li {
+#engine-container #message-list li {
   padding: 5px;
   font-family: fantasy;
   font-style: italic;
@@ -22,25 +25,25 @@
   border-radius: 10px;
 }
 
-#engine-container #display .user-text {
+#engine-container #message-list .user-text {
   margin-right: 50px;
   background-color: #7974c0;
   border: 5px #201c5a solid;
   color: #201c5a;
 }
 
-#engine-container #display .reply-text {
+#engine-container #message-list .reply-text {
   margin-left: 50px;
   background-color: #dfd687;
   border: 5px #795548 solid;
   color: #795548;
 }
 
-#engine-container form input {
+#engine-container #chat-form input {
   min-height: 30px;
 }
 
-#engine-container form #btn {
+#engine-container #chat-form #chat-btn {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: small;
   background-color: crimson;
@@ -49,6 +52,6 @@
   border: 3px lightgreen solid;
 }
 
-#engine-container form #btn:hover {
+#engine-container #chat-form #chat-btn:hover {
   background-color: darkolivegreen;
 }
