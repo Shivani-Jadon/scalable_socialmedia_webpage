@@ -10,10 +10,13 @@ module.exports.home = async function(req, res){
 
    try{
 
-      let users = await User.find({});
+      let users = await User.find({}).populate({path : 'friends'})
+
+      // users = await User.populate(users, {path : 'friends'})
+      
       // let logged_user = await User.findById(locals.user.id).populate({path : 'friends'});
 
-      // console.log(logged_user);
+      console.log(users);
 
       return res.render("homepage", 
                         {title: "Home page",

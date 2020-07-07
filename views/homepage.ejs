@@ -12,7 +12,20 @@
                 Friends
             </h3>
             <ul>
-                
+                <% user.friends.forEach(function(friend){ %> 
+                    <% console.log("friend : ",friend.sender, user.id) %>
+                    <% if(friend.sender == user.id) { %>
+                    <li>
+                         
+                        <a href="/user/profile/<%= friend.receiver.id %>"> 
+                            <!-- this will be changed if it works -->
+                            <%= user.first_name %>
+                            <%= user.last_name %>
+                        </a>
+                        
+                    </li> 
+                    <% } %>   
+                <% }) %> 
             </ul>
             <% } %>
 

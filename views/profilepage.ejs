@@ -33,11 +33,19 @@
     <script type="text/javascript" src="/script/preview.js"></script>
     <% } else{ %> 
         <% let friend_found = 0 %>
-        <% for(let friend of profile_user.friends) { %> 
-            <% if ((friend.sender == profile_user._id  &&  friend.receiver == user._id) || (friend.receiver == profile_user._id  &&  friend.sender == user._id)) { %> 
+
+        <% profile_user.friends.forEach(function(friend){ %> 
+            <% console.log(friend) %>
+            <% if (friend.sender == profile_user._id  &&  friend.receiver == user._id) { %> 
                 <% friend_found = 1 %>
-            <% } %>   
-        <% } %>
+                <% console.log(friend_found) %>
+            <% } else if (friend.receiver == profile_user._id  &&  friend.sender == user._id) { %>  
+                <%= friend_found = 1 %>
+                <% console.log(friend_found) %>
+            <% } %> 
+        <% }) %>
+
+
 
         <!-- if profile viewed is not a friend then ask for adding friend -->
         <section id="friend-request">
