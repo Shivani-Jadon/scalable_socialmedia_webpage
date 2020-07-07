@@ -1,3 +1,4 @@
+
 {
     
     // noty object for notification
@@ -32,7 +33,10 @@
                     // function callback for deleting comment
                     deleteComment($(` .comment-del-btn`, newComment));
 
- 
+                    // :: change funaction callback for toggling like on posts
+                    new ToggleLike($(` .toggle-like-btn`, newComment));
+
+
                     let flashMsg = "new comment created by your profile";
                     showNotification(flashMsg);    
                 },
@@ -54,7 +58,7 @@
                 type : 'get',
                 url : $(deleteLink).prop('href'),
                 success : function(data){
-                    $(`#user-comment-${data.data.comment._id}`).remove();
+                    $(`#user-comment-${data.data.comment_id}`).remove();
 
                     let flashMsg = "comment has been removed";
                     showNotification(flashMsg);
