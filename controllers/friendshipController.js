@@ -11,7 +11,7 @@ module.exports.addFriend = async function(req, res){
         let friend = await Friend.create({
             sender : req.query.sender,
             receiver : req.query.receiver
-        })
+        });
     
 
         let sender_info = await User.findById(req.query.sender);

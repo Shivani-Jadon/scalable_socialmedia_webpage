@@ -22,11 +22,7 @@ module.exports.post = async function(req, res){
                         .populate({path : 'userInfo' ,select: ['first_name', 'last_name', 'email']})
                         .populate({path : 'comments', options: { sort: '-createdAt' },       
                                 populate : {
-                                    path : 'user',
-                                    select: ['first_name', 'last_name', 'email']
-                                },
-                                populate : {
-                                    path : 'likes'
+                                    path : 'user likes'
                                 }}
                         )        
                         .populate(
@@ -34,8 +30,6 @@ module.exports.post = async function(req, res){
                                 path : 'likes'
                             }
                         );
-
-        console.log(posts);
        
         // console.log(posts);
         return res.render("posting_page", {title: "User's posts", posts : posts});

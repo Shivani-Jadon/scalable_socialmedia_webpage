@@ -1,4 +1,5 @@
 const User = require("../models/userInfo_model");
+const { populate } = require("../models/userInfo_model");
 
 //display homepage view when home is exported
 module.exports.home = async function(req, res){
@@ -10,13 +11,14 @@ module.exports.home = async function(req, res){
 
    try{
 
-      let users = await User.find({}).populate({path : 'friends'})
+      let users = await User.find({}).populate({path : 'friends', populate : {path : 'sender receiver'}});
 
       // users = await User.populate(users, {path : 'friends'})
       
       // let logged_user = await User.findById(locals.user.id).populate({path : 'friends'});
 
-      console.log(users);
+      for(let u of users)
+         console.log(u.friends);
 
       return res.render("homepage", 
                         {title: "Home page",

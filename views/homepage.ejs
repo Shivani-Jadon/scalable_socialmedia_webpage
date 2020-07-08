@@ -12,20 +12,32 @@
                 Friends
             </h3>
             <ul>
-                <% user.friends.forEach(function(friend){ %> 
-                    <% console.log("friend : ",friend.sender, user.id) %>
-                    <% if(friend.sender == user.id) { %>
-                    <li>
+                <% for (let u of all_users){ %> 
+                    <% if(locals.user.id != u.id) { %>
+                        <% for(let friend of u.friends) { %>
+                            <!-- if the user is sender of friend request -->
+                            <% if(friend.sender._id == user.id) { %>
+                            <li>                                
+                                <a href="/user/profile/<%= friend.receiver.id %>"> 
+                                    <!-- this will be changed if it works -->
+                                    <%= friend.receiver.first_name %>
+                                    <%= friend.receiver.last_name %>
+                                </a>                                
+                            </li> 
+                            <!-- if the user is reciever of friend request -->
+                            <% } else if(friend.receiver._id == user.id) { %>
+                                <li>                                
+                                    <a href="/user/profile/<%= friend.sender.id %>"> 
+                                        <!-- this will be changed if it works -->
+                                        <%= friend.sender.first_name %>
+                                        <%= friend.sender.last_name %>
+                                    </a>                                
+                                </li> 
+                            <% } %>
+                        <% } %> 
                          
-                        <a href="/user/profile/<%= friend.receiver.id %>"> 
-                            <!-- this will be changed if it works -->
-                            <%= user.first_name %>
-                            <%= user.last_name %>
-                        </a>
-                        
-                    </li> 
-                    <% } %>   
-                <% }) %> 
+                    <% } %>     
+                <% } %> 
             </ul>
             <% } %>
 
@@ -37,15 +49,19 @@
         </h3>
         <ul>
             <% for (u of all_users){ %> 
-                <% if(locals.user.id != u.id && user.friends.id != u.id) { %>
-                <li>
-                     
-                    <a href="/user/profile/<%= u.id %>"> 
-                        <%= u.first_name %>
-                        <%= u.last_name %>
-                    </a>
-                    
-                </li> 
+                <% if(locals.user.id != u.id) { %>
+
+                    <% for(let friend of u.friends) { %>
+                        <% if((friend.receiver._id != user.id) && (friend.sender._id != user.id)) { %>
+                            <li>                                
+                                <a href="/user/profile/<%= u.id %>"> 
+                                    <%= u.first_name %>
+                                    <%= u.last_name %>
+                                </a>                                
+                            </li> 
+                        <% } %>
+                    <% } %> 
+
                 <% } %>   
             <% } %> 
         </ul>
