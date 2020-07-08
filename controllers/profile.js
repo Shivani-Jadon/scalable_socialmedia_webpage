@@ -7,7 +7,7 @@ module.exports.profile_of_user = async function(req, res){
 
     try{
 
-        let user = await User.findById(req.params.id).populate('friends');
+        let user = await User.findById(req.params.id).populate({path : 'friends', populate : {path : 'sender receiver'}});
 
         return res.render("profilepage", {title: "User's profile",
                                             profile_user : user});

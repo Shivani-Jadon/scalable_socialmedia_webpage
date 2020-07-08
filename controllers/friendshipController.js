@@ -49,7 +49,7 @@ module.exports.removeFriend = async function(req, res){
             receiver : req.query.user_receive
         });
     
-        console.log(friend_data1);
+        // console.log(friend_data1);
 
         // checking if profile data user is sender and primary user is receiver
         let friend_data2 = await Friend.findOne({
@@ -74,9 +74,9 @@ module.exports.removeFriend = async function(req, res){
         else if(friend_data2)
         {
             // console.log("In case 2 ---->");
-            let sender_info = await User.findByIdAndUpdate( req.query.user_receive, {$pop : {friends : friend_data2._id}});
+            let sender_info = await User.findByIdAndUpdate( req.query.user_send, {$pull : {friends : friend_data2._id}});
             sender_info.save();
-            let receiver_info = await User.findByIdAndUpdate(req.query.user_send, {$pop : {friends : friend_data2._id}});
+            let receiver_info = await User.findByIdAndUpdate(req.query.user_receive, {$pull : {friends : friend_data2._id}});
             receiver_info.save();
         
             friend_data2.remove();

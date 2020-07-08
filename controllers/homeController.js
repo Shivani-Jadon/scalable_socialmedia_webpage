@@ -13,10 +13,6 @@ module.exports.home = async function(req, res){
 
       let users = await User.find({}).populate({path : 'friends', populate : {path : 'sender receiver'}});
 
-      // users = await User.populate(users, {path : 'friends'})
-      
-      // let logged_user = await User.findById(locals.user.id).populate({path : 'friends'});
-
       // for(let u of users)
       //    console.log(u.friends);
 
