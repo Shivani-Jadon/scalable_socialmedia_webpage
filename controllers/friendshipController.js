@@ -40,24 +40,32 @@ module.exports.addFriend = async function(req, res){
 module.exports.removeFriend = async function(req, res){
 
     try{
+
+        console.log(req.query.user_send);
+        console.log(req.query.user_receive);
         // checking if primary user is sender and profile data user is receiver
         let friend_data1 = await Friend.findOne({
             sender : req.query.user_send,
             receiver : req.query.user_receive
         });
     
+        console.log(friend_data1);
+
         // checking if profile data user is sender and primary user is receiver
         let friend_data2 = await Friend.findOne({
-            sender : req.query.user_send,
-            receiver : req.query.user_receive
+            sender : req.query.user_receive,
+            receiver : req.query.user_send
         });
+
+        console.log(friend_data2);
 
         // deleting data if Case 1 is true
         if(friend_data1)
         {
-            let sender_info = await User.findByIdAndUpdate( req.query.user_send, {$pop : {friends : friend_data1._id}});
+            // console.log("In case 1 ---->", friend_data1._id);
+            let sender_info = await User.findByIdAndUpdate( req.query.user_send, {$pull : {friends : friend_data1._id}});
             sender_info.save();
-            let receiver_info = await User.findById(req.query.user_receive, {$pop : {friends : friend_data1._id}});
+            let receiver_info = await User.findByIdAndUpdate(req.query.user_receive, {$pull : {friends : friend_data1._id}});
             receiver_info.save();
         
             friend_data1.remove();
@@ -65,9 +73,10 @@ module.exports.removeFriend = async function(req, res){
         // deleting data if case 2 is true
         else if(friend_data2)
         {
+            // console.log("In case 2 ---->");
             let sender_info = await User.findByIdAndUpdate( req.query.user_receive, {$pop : {friends : friend_data2._id}});
             sender_info.save();
-            let receiver_info = await User.findById(req.query.user_send, {$pop : {friends : friend_data2._id}});
+            let receiver_info = await User.findByIdAndUpdate(req.query.user_send, {$pop : {friends : friend_data2._id}});
             receiver_info.save();
         
             friend_data2.remove();

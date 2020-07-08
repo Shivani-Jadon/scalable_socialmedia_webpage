@@ -13,7 +13,9 @@
             </h3>
             <ul>
                 <% for (let u of all_users){ %> 
-                    <% if(locals.user.id != u.id) { %>
+                    <% if(locals.user.id == u.id) { %>
+                        <!-- saving the local user object to be used later -->
+                        <% var log_user = u %>
                         <% for(let friend of u.friends) { %>
                             <!-- if the user is sender of friend request -->
                             <% if(friend.sender._id == user.id) { %>
@@ -50,9 +52,16 @@
         <ul>
             <% for (u of all_users){ %> 
                 <% if(locals.user.id != u.id) { %>
-
-                    <% for(let friend of u.friends) { %>
-                        <% if((friend.receiver._id != user.id) && (friend.sender._id != user.id)) { %>
+                    <% let isFriend = 0 %>
+                    <!-- checking whether the logged in user is friend of the other user -->
+                    <% for(let friend of log_user.friends) { %>
+                        <% if( (friend.sender.id == u.id) || (friend.receiver.id == u.id)) { %>
+                            <% isFriend = 1 %>
+                        <% } %>
+                    <% } %>
+                        
+                        <% console.log("IS friend : ",isFriend) %>
+                        <% if(isFriend == 0) { %>
                             <li>                                
                                 <a href="/user/profile/<%= u.id %>"> 
                                     <%= u.first_name %>
@@ -60,10 +69,15 @@
                                 </a>                                
                             </li> 
                         <% } %>
-                    <% } %> 
 
                 <% } %>   
             <% } %> 
+            <!-- <li>                                
+                <a href="/user/profile/<%= u.id %>"> 
+                    <%= u.first_name %>
+                    <%= u.last_name %>
+                </a>                                
+            </li>  -->
         </ul>
         <% } %>
     </section>

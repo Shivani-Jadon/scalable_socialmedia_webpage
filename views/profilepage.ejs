@@ -34,31 +34,31 @@
     <% } else{ %> 
         <% let friend_found = 0 %>
 
-        <% profile_user.friends.forEach(function(friend){ %> 
+        <% for (let friend of profile_user.friends){ %> 
             <% console.log(friend) %>
-            <% if (friend.sender == profile_user._id  &&  friend.receiver == user._id) { %> 
+            <% if (friend.sender == profile_user.id  &&  friend.receiver == user.id) { %> 
                 <% friend_found = 1 %>
                 <% console.log(friend_found) %>
-            <% } else if (friend.receiver == profile_user._id  &&  friend.sender == user._id) { %>  
+            <% } else if (friend.receiver.id == profile_user.id  &&  friend.sender == user.id) { %>  
                 <%= friend_found = 1 %>
                 <% console.log(friend_found) %>
             <% } %> 
-        <% }) %>
+        <% } %>
 
 
 
         <!-- if profile viewed is not a friend then ask for adding friend -->
         <section id="friend-request">
-            <% if(friend_found == 1) { %>
+            
                 <button type="button">
-                    <a href='/friend/remove/?user_send=<%=user.id %>&user_receive=<%=profile_user._id%>'> Unfriend </a>
+                    <a href='/friend/remove/?user_send=<%=user._id %>&user_receive=<%=profile_user._id%>'> Unfriend </a>
                 </button>
                 
-            <% } else { %>
+            
                 <button type="button">
                     <a href='/friend/add/?sender=<%=user._id %>&receiver=<%=profile_user._id%>'> Friend </a>
                 </button>
-            <% } %>
+            
         </section>
 
     <% } %>
